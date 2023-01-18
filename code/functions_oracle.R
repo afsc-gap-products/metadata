@@ -26,10 +26,11 @@ oracle_connect <- function(schema='AFSC',
   }
   
 
-#' Title
+#' Download tables fro oracle
 #'
 #' @param locations A string of each oracle schema.table you need to download. 
 #' @param channel Establish your oracle connection using a function like oracle_connect. 
+#' @param dir_out
 #'
 #' @return
 #' @export
@@ -38,8 +39,8 @@ oracle_connect <- function(schema='AFSC',
 #' # Not run: 
 #' # locations <- c("RACEBASE.CATCH", "RACEBASE.HAUL")
 #' # channel <- oracle_connect()
-#' # download_oracle(locations, channel)
-oracle_download <- function(locations, channel, dir_out = "./") {
+#' # oracle_dl(locations, channel)
+oracle_dl <- function(locations, channel, dir_out = "./") {
   
   for (i in 1:length(locations)){
     print(locations[i])
@@ -57,15 +58,10 @@ oracle_download <- function(locations, channel, dir_out = "./") {
       a<-RODBC::sqlQuery(channel, paste0("SELECT * FROM ", locations[i]))
     }
     
-    if (locations[i] == "AI.CPUE") {
-      filename <- "cpue_ai"
-    } else if (locations[i] == "GOA.CPUE") {
-      filename <- "cpue_goa"
-    } else {
-      filename <- tolower(strsplit(x = locations[i], 
-                                   split = ".", 
-                                   fixed = TRUE)[[1]][2])
-    }
+    filename <- tolower(gsub(x = locations[i], 
+                             pattern = ".", 
+                             replacement = "_", 
+                             fixed = TRUE))
     
     write.csv(x=a, 
               paste0("./data/oracle/",
@@ -100,7 +96,7 @@ oracle_download <- function(locations, channel, dir_out = "./") {
 #' #   desc = "Dummy example column") #  description of column
 #' # file_paths <- data.frame(file_path = "./dummy.csv", 
 #' #                          table_metadata = Sys.Date())
-#' # upload_to_oracle <- function(
+#' # oracle_upload <- function(
 #' #     file_paths = file_paths, 
 #' #     metadata_column = metadata_column, 
 #' #     channel = channel, 
@@ -125,7 +121,7 @@ oracle_upload <- function(
   for (ii in 1:nrow(file_paths)) {
     
     print(file_paths$file_path[ii])
-    file_name <- toupper(file_name)
+    file_name <- trimws(toupper(file_name))
     file_name <- strsplit(x = file_name, split = "/", fixed = TRUE)[[1]]
     file_name <- strsplit(x = file_name[length(file_name)], split = ".", fixed = TRUE)
     file_name <- file_name[[1]][1]
@@ -189,3 +185,94 @@ oracle_upload <- function(
     
   }
 }
+
+
+  locations <- c("RACE_DATA", "RACEBASE")
+#' Download oracle table and column metadata
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' # Not run: 
+#' # locations <- c("RACEBASE", "RACEDATA")
+#' # channel <- oracle_connect()
+#' # oracle_dl_metadata(locations, channel)
+oracle_dl_metadata <- function(
+    locations, 
+    channel, 
+    dir_out = "./") {
+  
+  a_col <- data.frame()
+  a_table <- data.frame()
+  
+  for (i in 1:length(locations)) {
+    
+    loc <- trimws(toupper(locations[i]))
+    print(loc)
+    
+    # --TABLE METADATA QUIERY FROM NANCY
+    # SELECT
+    # table_name,
+    # comments
+    # FROM
+    # all_tab_comments
+    # WHERE
+    # owner = 'RACEBASE'
+    # AND comments IS NOT NULL
+    # AND comments NOT LIKE '%without metadata%'
+    # ORDER BY
+    # table_name ASC
+    
+    a <- RODBC::sqlQuery(channel = channel, 
+                         query = paste0("SELECT table_name, comments FROM all_tab_comments WHERE owner = '",
+                                        loc,"' ORDER BY table_name")) # AND comments IS NOT NULL AND comments NOT LIKE '%without metadata%'  ASC
+    
+    # a <- RODBC::sqlQuery(channel = channel, query = paste0("SELECT
+    # table_name, ",locations[i],"
+    # FROM
+    # user_tables
+    # ORDER BY
+    # owner, table_name"))
+    
+    a_col <- dplyr::bind_rows(a_col, 
+                              a %>% 
+                                dplyr::mutate(schema = loc))
+    
+    
+    # Download Oracle Data Table information ---------------------------------------
+    
+    # -COLUMN METDATA QUIERY FROM NANCY
+    # SELECT DISTINCT
+    # ( table_name ),
+    # comments
+    # FROM
+    # all_col_comments
+    # WHERE
+    # owner = 'RACEBASE'
+    # AND comments IS NOT NULL
+    # AND table_name LIKE '%_ORIG%'
+    # GROUP BY
+    # table_name,
+    # comments
+    # ORDER BY
+    # table_name ASC
+    
+    a <- RODBC::sqlQuery(channel = channel, 
+                         query = paste0("SELECT DISTINCT ( table_name ), comments FROM all_col_comments WHERE owner = '",
+                                        loc,"' AND comments IS NOT NULL GROUP BY table_name, comments ORDER BY table_name ASC"))
+    
+    a_table <- dplyr::bind_rows(a_table, 
+                                a %>% 
+                                  dplyr::mutate(schema = loc))
+    
+  }
+  
+  write.csv(x = unique(a_col), 
+            file = paste0(dir_out, "/metadata_column_current.csv"))
+  write.csv(x = unique(a_table), 
+            file = paste0(dir_out, "/metadata_table_current.csv"))
+  
+}
+
+

@@ -27,10 +27,14 @@ surveys <-
 dir_out <- paste0(getwd(), "/metadata/", Sys.Date(), "/")
 dir.create(dir_out)
 
+library(magrittr)
+
 source('./code/functions_oracle.R')
 source('./code/metadata.R')
 
 # Check work -------------------------------------------------------------------
+# Find all metadata currently used across oracle
+source("./code/metadata_current.R") 
 
 # Update README and Share table to oracle --------------------------------------
 
