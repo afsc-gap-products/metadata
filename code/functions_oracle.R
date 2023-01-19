@@ -160,7 +160,7 @@ oracle_upload <- function(
           
           desc <- gsub(pattern = "<sup>2</sup>",
                        replacement = "2",
-                       x = metadata_column0$metadata_colname_desc[i], fixed = TRUE)
+                       x = metadata_column0$metadata_colname_long[i], fixed = TRUE)
           short_colname <- gsub(pattern = "<sup>2</sup>", replacement = "2",
                                 x = metadata_column0$metadata_colname[i], fixed = TRUE)
           
