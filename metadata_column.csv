@@ -1,4 +1,4 @@
-colname,colname_desc,units,desc
+metadata_colname,metadata_colname_long,metadata_units,metadata_colname_desc
 year,Year,numeric,Year the survey was conducted in.
 srvy,Survey,Abbreviated text,"Abbreviated survey names. The column 'srvy' is associated with the 'survey' and 'survey_id' columns. Northern Bering Sea (NBS), Southeastern Bering Sea (EBS), Bering Sea Slope (BSS), Gulf of Alaska (GOA), Aleutian Islands (AI). "
 survey,Survey Name,text,Name and description of survey. The column 'survey' is associated with the 'srvy' and 'survey_id' columns. 
@@ -38,4 +38,10 @@ duration_hr,Tow Duration (decimal hr),decimal hours,This is the elapsed time bet
 performance,Haul Performance Code (rating),rating,"This denotes what, if any, issues arose during the haul. For more information, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
 itis,ITIS Taxonomic Serial Number,ID code,Species code as identified in the Integrated Taxonomic Information System (https://itis.gov/). Codes were last updated NA.
 worms,World Register of Marine Species Taxonomic Serial Number,ID code,Species code as identified in the World Register of Marine Species (WoRMS) (https://www.marinespecies.org/). Codes were last updated NA.
-colname,colname_desc,units,desc
+metadata_colname,Column name,text,Name of the column in a table
+metadata_colname_long,Column name spelled out,text,Long name for the column
+metadata_units,Units,text,units the column is in
+metadata_colname_desc,column description,text,Descritpion of the column
+metadata_sentence_type,Sentence type,text,Type of sentence to have in table metadata
+metadata_sentence,Sentence,text,Table metadata sentence
+dummy,dummy,dummy,dummy

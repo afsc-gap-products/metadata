@@ -77,6 +77,7 @@ oracle_dl <- function(locations, channel, dir_out = "./") {
 #' @param file_paths 
 #' @param metadata_column A data.frame of all possible column metadata your tables will need affixed. 
 #' @param channel Establish your oracle connection using a function like oracle_connect. 
+#' @param schema Character. The name of the schema these tables should be saved to. 
 #' @param update_table T/F. Default = TRUE. Save or drop and save the table in Oracle. 
 #' @param update_metadata T/F. Default = TRUE. Add table and column metadata to the tables. 
 #' @param share_with_all_users T/F. Default = TRUE. Give all users in oracle view permissions. 
@@ -99,7 +100,8 @@ oracle_dl <- function(locations, channel, dir_out = "./") {
 #' # oracle_upload <- function(
 #' #     file_paths = file_paths, 
 #' #     metadata_column = metadata_column, 
-#' #     channel = channel, 
+#' #     channel = channel,
+#' #     schema = "GAP_PRODUCTS",  
 #' #     update_table = TRUE, 
 #' #     update_metadata = TRUE,
 #' #     share_with_all_users = TRUE)
@@ -107,11 +109,12 @@ oracle_upload <- function(
     file_paths, 
     metadata_column, 
     channel, 
+    schema, 
     update_table = TRUE, 
     update_metadata = TRUE,
     share_with_all_users = TRUE) {
   
-  metadata_column$colname <- toupper(metadata_column$colname)
+  metadata_column$metadata_colname <- toupper(metadata_column$metadata_colname)
   
   all_schemas <- RODBC::sqlQuery(channel = channel,
                                  query = paste0('SELECT * FROM all_users;'))
@@ -121,7 +124,7 @@ oracle_upload <- function(
   for (ii in 1:nrow(file_paths)) {
     
     print(file_paths$file_path[ii])
-    file_name <- trimws(toupper(file_name))
+    file_name <- trimws(toupper(file_paths$file_path[ii]))
     file_name <- strsplit(x = file_name, split = "/", fixed = TRUE)[[1]]
     file_name <- strsplit(x = file_name[length(file_name)], split = ".", fixed = TRUE)
     file_name <- file_name[[1]][1]
@@ -151,35 +154,35 @@ oracle_upload <- function(
     
     if (update_metadata) {
       ## Add column metadata --------------------------------------------------------
-      metadata_column0 <- metadata_column[which(metadata_column$colname %in% names(a)),]
+      metadata_column0 <- metadata_column[which(metadata_column$metadata_colname %in% names(a)),]
       if (nrow(metadata_column0)>0) {
         for (i in 1:nrow(metadata_column0)) {
           
           desc <- gsub(pattern = "<sup>2</sup>",
                        replacement = "2",
-                       x = metadata_column0$colname_desc[i], fixed = TRUE)
+                       x = metadata_column0$metadata_colname_desc[i], fixed = TRUE)
           short_colname <- gsub(pattern = "<sup>2</sup>", replacement = "2",
-                                x = metadata_column0$colname[i], fixed = TRUE)
+                                x = metadata_column0$metadata_colname[i], fixed = TRUE)
           
           RODBC::sqlQuery(channel = channel,
-                          query = paste0('comment on column RACEBASE_FOSS.',file_name,'.',
+                          query = paste0('comment on column ',schema,'.',file_name,'.',
                                          short_colname,' is \'',
                                          desc, ". ", # remove markdown/html code
                                          gsub(pattern = "'", replacement ='\"',
-                                              x = metadata_column0$desc[i]),'\';'))
+                                              x = metadata_column0$metadata_colname_desc[i]),'\';'))
           
         }
       }
       ## Add table metadata ---------------------------------------------------------
       RODBC::sqlQuery(channel = channel,
-                      query = paste0('comment on table RACEBASE_FOSS.',file_name,
+                      query = paste0('comment on table ',schema,'.', file_name,
                                      ' is \'',
                                      file_paths$table_metadata[ii],'\';'))
     }
     ## grant access to all schemes ------------------------------------------------
     for (iii in 1:length(sort(all_schemas$USERNAME))) {
       RODBC::sqlQuery(channel = channel,
-                      query = paste0('grant select on RACEBASE_FOSS.',file_name,
+                      query = paste0('grant select on ',schema,'.',file_name,
                                      ' to ', all_schemas$USERNAME[iii],';'))
     }
     

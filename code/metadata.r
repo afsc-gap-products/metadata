@@ -44,7 +44,7 @@ metadata_table <- data.frame(matrix(
   "codebook", metadata_sentence_codebook) 
 ) )
 
-names(metadata_table) <- c("sentence_type", "sentence")
+names(metadata_table) <- c("metadata_sentence_type", "metadata_sentence")
 
 readr::write_csv(x = metadata_table, 
                  file = paste0(dir_out, "metadata_table.csv"))
@@ -138,19 +138,23 @@ metadata_column <- data.frame(matrix(
     
     
     
-    
     # metadata tables:
-    "colname", 
-    "colname_desc", 
-    "units", 
-    "desc"
+    "metadata_colname", "Column name", "text", "Name of the column in a table", 
+    "metadata_colname_long", "Column name spelled out", "text", "Long name for the column", 
+    "metadata_units", "Units", "text", "units the column is in", 
+    "metadata_colname_desc", "column description", "text", "Descritpion of the column", 
+    "metadata_sentence_type", "Sentence type", "text", "Type of sentence to have in table metadata",  
+    "metadata_sentence", "Sentence", "text", "Table metadata sentence", 
+    
+    "dummy", "dummy", "dummy", "dummy"
     
     
     
   )))
 
-names(metadata_column) <- c("colname", "colname_desc", "units", "desc")
+names(metadata_column) <- c("metadata_colname", "metadata_colname_long", "metadata_units", "metadata_colname_desc")
 readr::write_csv(x = metadata_column, 
                  file = paste0(dir_out, "metadata_column.csv"))
+
 
 

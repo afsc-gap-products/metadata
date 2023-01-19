@@ -99,7 +99,7 @@ Here are stock metadata that users can use to document their table columns:
 
 ```{r column-metadata, echo = FALSE}
 metadata_column0 <- read.csv(file = paste0(dir_out, "metadata_column.csv"))
-names(metadata_column0) <- c("Column name from data", "Descriptive Column Name", "Units", "Description")
+names(metadata_column0) <- c("Column name from data", "Descriptive column Name", "Units", "Column description")
 knitr::kable(metadata_column0, row.names = FALSE) 
 ```
 

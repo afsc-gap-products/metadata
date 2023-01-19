@@ -45,4 +45,5 @@ file_paths <- data.frame(
 oracle_upload(
     file_paths = file_paths, 
     metadata_column = metadata_column, 
-    channel = channel_products)
+    channel = channel_products, 
+    schema = "GAP_PRODUCTS")

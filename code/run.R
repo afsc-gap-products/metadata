@@ -41,8 +41,10 @@ source("./code/metadata_current.R")
 # This is an accepted version of the data: 
 dir_out <- paste0(getwd(), "/metadata/2023-01-18/")
 
-pretty_date <- format(x = as.Date(strsplit(x = dir_out, split = "/", fixed = TRUE)[[1]][length(
-  strsplit(x = dir_out, split = "/", fixed = TRUE)[[1]])]), 
+pretty_date <- format(
+  x = as.Date(strsplit(x = dir_out, 
+                       split = "/", 
+                       fixed = TRUE)[[1]][length(strsplit(x = dir_out, split = "/", fixed = TRUE)[[1]])]), 
   "%B %d, %Y")
 
 rmarkdown::render(paste0("./README.Rmd"),
