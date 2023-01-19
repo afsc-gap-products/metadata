@@ -64,7 +64,7 @@ oracle_dl <- function(locations, channel, dir_out = "./") {
                              fixed = TRUE))
     
     write.csv(x=a, 
-              paste0("./data/oracle/",
+              paste0(dir_out,
                      filename,
                      ".csv"))
     remove(a)
