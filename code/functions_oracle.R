@@ -189,8 +189,6 @@ oracle_upload <- function(
   }
 }
 
-
-  locations <- c("RACE_DATA", "RACEBASE")
 #' Download oracle table and column metadata
 #'
 #' @return
