@@ -40,9 +40,15 @@ oracle_connect <- function(schema='AFSC',
 #' # locations <- c("RACEBASE.CATCH", "RACEBASE.HAUL")
 #' # channel <- oracle_connect()
 #' # oracle_dl(locations, channel)
-oracle_dl <- function(locations, channel, dir_out = "./") {
+oracle_dl <- function(
+    locations, 
+    channel, 
+    dir_out = "./") {
+  
+  error_report <- data.frame("location" = NULL, error = NULL)
   
   for (i in 1:length(locations)){
+    
     print(locations[i])
     if (locations[i] == "RACEBASE.HAUL") { # that way I can also extract TIME
       
@@ -63,12 +69,20 @@ oracle_dl <- function(locations, channel, dir_out = "./") {
                              replacement = "_", 
                              fixed = TRUE))
     
+    if (grepl(pattern = "[RODBC] ERROR:", x = a$x[2], fixed = TRUE)){
+    error_report <- error_report %>% 
+      dplry::add_row("location" = filename, error = a$x[2])
+    }
+    
     write.csv(x=a, 
               paste0(dir_out,
                      filename,
                      ".csv"))
     remove(a)
   }
+  
+    return(error_report)
+  
 }
 
 
