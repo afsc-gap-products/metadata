@@ -81,7 +81,11 @@ oracle_dl <- function(
     remove(a)
   }
   
-  return(error_report[-1,])
+  if (nrow(error_report)>0) {
+    return(error_report[-1,])
+  } else {
+    return("All tables successfully downloaded. ")
+  }
 }
 
 
@@ -289,8 +293,6 @@ oracle_dl_metadata <- function(
   
 }
 
-
-
 #' Load data saved by oracle_dl
 #'
 #' @param dir_in Directory where the csv files are saved
@@ -302,7 +304,7 @@ oracle_dl_metadata <- function(
 #' @examples
 load_data <- function(dir_in, locations) {
   a <- tolower(gsub(pattern = ".", replacement = "_", x = locations, fixed = TRUE))
-  for (i in 1:length(locations)){
+  for (i in 1:length(a)){
     b <- readr::read_csv(file = paste0(dir_in, a[i], ".csv"), 
                          show_col_types = FALSE)
     b <- janitor::clean_names(b)
@@ -311,6 +313,9 @@ load_data <- function(dir_in, locations) {
     }
     temp <- strsplit(x = a[i], split = "/")
     temp <- gsub(pattern = "\\.csv", replacement = "", x = temp[[1]][length(temp[[1]])])
+    print(paste0(temp, "0"))
     assign(x = paste0(temp, "0"), value = b)
   }
 }
+
+
