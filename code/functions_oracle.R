@@ -45,7 +45,7 @@ oracle_dl <- function(
     channel, 
     dir_out = "./") {
   
-  error_report <- data.frame("location" = NULL, error = NULL)
+  error_report <- data.frame("location" = NA, "error" = NA)
   
   for (i in 1:length(locations)){
     
@@ -69,9 +69,9 @@ oracle_dl <- function(
                              replacement = "_", 
                              fixed = TRUE))
     
-    if (grepl(pattern = "[RODBC] ERROR:", x = a$x[2], fixed = TRUE)){
-    error_report <- error_report %>% 
-      dplry::add_row("location" = filename, error = a$x[2])
+    if (grepl(pattern = "[RODBC] ERROR:", x = a[2], fixed = TRUE)) {
+      error_report <- dplyr::add_row(.data = error_report, 
+                                     "location" = locations[i], "error" = paste0(a, collapse = ""))
     }
     
     write.csv(x=a, 
@@ -81,8 +81,7 @@ oracle_dl <- function(
     remove(a)
   }
   
-    return(error_report)
-  
+  return(error_report[-1,])
 }
 
 
