@@ -290,3 +290,27 @@ oracle_dl_metadata <- function(
 }
 
 
+
+#' Load data saved by oracle_dl
+#'
+#' @param dir_in Directory where the csv files are saved
+#' @param locations A string of each oracle schema.table you need to download. 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+load_data <- function(dir_in, locations) {
+  a <- tolower(gsub(pattern = ".", replacement = "_", x = locations, fixed = TRUE))
+  for (i in 1:length(locations)){
+    b <- readr::read_csv(file = paste0(dir_in, a[i], ".csv"), 
+                         show_col_types = FALSE)
+    b <- janitor::clean_names(b)
+    if (names(b)[1] %in% "x1"){
+      b$x1<-NULL
+    }
+    temp <- strsplit(x = a[i], split = "/")
+    temp <- gsub(pattern = "\\.csv", replacement = "", x = temp[[1]][length(temp[[1]])])
+    assign(x = paste0(temp, "0"), value = b)
+  }
+}
