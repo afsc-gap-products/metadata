@@ -148,9 +148,15 @@ oracle_upload <- function(
     
     a <- read.csv(file_paths$file_path[ii])
     names(a) <- toupper(names(a))
-    assign(x = file_name, value = a)
     
+    if (names(a)[1] %in% "X") {
+      a$X<-NULL
+    }
+    
+    rownames(a) <- NULL
     names(a) <- toupper(names(a))
+    
+    assign(x = file_name, value = a)
     
     if (update_table) {
       
@@ -159,14 +165,46 @@ oracle_upload <- function(
       if (file_name %in% 
           unlist(RODBC::sqlQuery(channel = channel, 
                                  query = "SELECT table_name FROM user_tables;"))) {
+        
         RODBC::sqlDrop(channel = channel,
                        sqtable = file_name)
       }
       
       ## Add the table to the schema ------------------------------------------------
-      eval( parse(
-        text = paste0("RODBC::sqlSave(channel = channel,
-                 dat = ",file_name,")") ))
+      
+      # eval( parse(text = paste0("RODBC::sqlSave(channel = channel, 
+      #                dat = ",file_name, ")") ))
+      
+      # find columns that need special data type help
+      if (sum(names(col_types) %in% names(a))>0) {
+        
+        col_types <- list(
+          YEAR = "NUMBER(10)", 
+          START_TIME = "TO_CHAR(START_TIME,'MM/DD/YYYY HH24:MI:SS')", 
+          COUNT_NUMBER = "NUMBER(10)", 
+          COUNT_LENGTH = "NUMBER(10)", 
+          COUNT_CATCH = "NUMBER(10)", 
+          COUNT_HAUL = "NUMBER(10)", 
+          HAULJOIN = "NUMBER(10)", 
+          SPECIES_CODE = "NUMBER(10)", 
+          CRUISE = "NUMBER(10)", 
+          CRUISEJOIN = "NUMBER(10)", 
+          STATION = "TO_CHAR()", 
+          STRATUM = "TO_CHAR()"
+        )        
+        cc <- col_types[(names(col_types) %in% names(a))]
+        
+      }
+      
+      eval( parse(text = 
+                    paste0("RODBC::sqlSave(channel = channel, 
+                     dat = ",file_name, "
+                                ", ifelse(length(cc)<1, 
+                                          "", 
+                                          paste0(", varTypes = c(", 
+                                                 paste0(names(cc), " = '", unlist(cc), "'", collapse = ", "), 
+                                                 ")")), 
+                           ")") )) 
     }
     
     if (update_metadata) {
@@ -205,6 +243,7 @@ oracle_upload <- function(
     
   }
 }
+
 
 #' Download oracle table and column metadata
 #'
@@ -253,12 +292,10 @@ oracle_dl_metadata <- function(
     # ORDER BY
     # owner, table_name"))
     
-    a_col <- dplyr::bind_rows(a_col, 
+    a_table <- dplyr::bind_rows(a_table, 
                               a %>% 
                                 dplyr::mutate(schema = loc))
     
-    
-    # Download Oracle Data Table information ---------------------------------------
     
     # -COLUMN METDATA QUIERY FROM NANCY
     # SELECT DISTINCT
@@ -276,11 +313,13 @@ oracle_dl_metadata <- function(
     # ORDER BY
     # table_name ASC
     
+    # a <- RODBC::sqlQuery(channel = channel, query = "select * from all_tab_cols;")
+    
     a <- RODBC::sqlQuery(channel = channel, 
                          query = paste0("SELECT DISTINCT ( table_name ), comments FROM all_col_comments WHERE owner = '",
-                                        loc,"' AND comments IS NOT NULL GROUP BY table_name, comments ORDER BY table_name ASC"))
+                                        loc,"' AND comments IS NOT NULL AND comments IS NOT NULL GROUP BY table_name, comments ORDER BY table_name ASC"))
     
-    a_table <- dplyr::bind_rows(a_table, 
+    a_col <- dplyr::bind_rows(a_col, 
                                 a %>% 
                                   dplyr::mutate(schema = loc))
     
