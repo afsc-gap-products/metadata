@@ -178,11 +178,11 @@ oracle_upload <- function(
         COUNT_NUMBER = "NUMBER(10)", 
         COUNT_LENGTH = "NUMBER(10)", 
         COUNT_CATCH = "NUMBER(10)", 
-        COUNT_HAUL = "NUMBER(10)", 
+        COUNT_HAUL = "NUMBER(10)"#, 
         # HAULJOIN = "NUMBER(10)", 
         # SPECIES_CODE = "NUMBER(10)", 
-        CRUISE = "NUMBER(10)", 
-        CRUISEJOIN = "NUMBER(10)"#, 
+        # CRUISE = "NUMBER(10)", 
+        # CRUISEJOIN = "NUMBER(10)"#, 
         # STATION = "TEXT", 
         # STRATUM = "TEXT"
       )  
