@@ -183,8 +183,8 @@ oracle_upload <- function(
         SPECIES_CODE = "NUMBER(10)", 
         CRUISE = "NUMBER(10)", 
         CRUISEJOIN = "NUMBER(10)", 
-        STATION = "TO_CHAR()", 
-        STRATUM = "TO_CHAR()"
+        STATION = "TEXT", 
+        STRATUM = "TEXT"
       )  
       
       # find columns that need special data type help
@@ -197,11 +197,8 @@ oracle_upload <- function(
                     paste0("RODBC::sqlSave(channel = channel, dat = ",
                            file_name, 
                            ifelse(length(cc)<1, 
-                                  "", 
-                                  paste0(", varTypes = c(", 
-                                         paste0(names(cc), " = '", unlist(cc), "'", collapse = ", "), 
-                                         ")")), 
-                           ")") )) 
+                                  ")", 
+                                  paste0(", varTypes = cc)") )) ) ) 
     }
     
     if (update_metadata) {
