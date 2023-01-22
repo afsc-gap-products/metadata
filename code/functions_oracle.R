@@ -182,9 +182,9 @@ oracle_upload <- function(
         HAULJOIN = "NUMBER(10)", 
         SPECIES_CODE = "NUMBER(10)", 
         CRUISE = "NUMBER(10)", 
-        CRUISEJOIN = "NUMBER(10)", 
-        STATION = "TEXT", 
-        STRATUM = "TEXT"
+        CRUISEJOIN = "NUMBER(10)"#, 
+        # STATION = "TEXT", 
+        # STRATUM = "TEXT"
       )  
       
       # find columns that need special data type help
