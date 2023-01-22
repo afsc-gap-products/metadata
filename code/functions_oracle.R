@@ -188,20 +188,19 @@ oracle_upload <- function(
       )  
       
       # find columns that need special data type help
+      cc <- c()
       if (sum(names(col_types) %in% names(a))>0) {
-        
         cc <- col_types[(names(col_types) %in% names(a))]
-        
       }
       
       eval( parse(text = 
-                    paste0("RODBC::sqlSave(channel = channel, 
-                     dat = ",file_name, "
-                                ", ifelse(length(cc)<1, 
-                                          "", 
-                                          paste0(", varTypes = c(", 
-                                                 paste0(names(cc), " = '", unlist(cc), "'", collapse = ", "), 
-                                                 ")")), 
+                    paste0("RODBC::sqlSave(channel = channel, dat = ",
+                           file_name, 
+                           ifelse(length(cc)<1, 
+                                  "", 
+                                  paste0(", varTypes = c(", 
+                                         paste0(names(cc), " = '", unlist(cc), "'", collapse = ", "), 
+                                         ")")), 
                            ")") )) 
     }
     
