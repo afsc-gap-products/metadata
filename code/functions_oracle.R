@@ -172,26 +172,24 @@ oracle_upload <- function(
       
       ## Add the table to the schema ------------------------------------------------
       
-      # eval( parse(text = paste0("RODBC::sqlSave(channel = channel, 
-      #                dat = ",file_name, ")") ))
+      col_types <- list(
+        YEAR = "NUMBER(10)", 
+        START_TIME = "TO_CHAR(START_TIME,'MM/DD/YYYY HH24:MI:SS')", 
+        COUNT_NUMBER = "NUMBER(10)", 
+        COUNT_LENGTH = "NUMBER(10)", 
+        COUNT_CATCH = "NUMBER(10)", 
+        COUNT_HAUL = "NUMBER(10)", 
+        HAULJOIN = "NUMBER(10)", 
+        SPECIES_CODE = "NUMBER(10)", 
+        CRUISE = "NUMBER(10)", 
+        CRUISEJOIN = "NUMBER(10)", 
+        STATION = "TO_CHAR()", 
+        STRATUM = "TO_CHAR()"
+      )  
       
       # find columns that need special data type help
       if (sum(names(col_types) %in% names(a))>0) {
         
-        col_types <- list(
-          YEAR = "NUMBER(10)", 
-          START_TIME = "TO_CHAR(START_TIME,'MM/DD/YYYY HH24:MI:SS')", 
-          COUNT_NUMBER = "NUMBER(10)", 
-          COUNT_LENGTH = "NUMBER(10)", 
-          COUNT_CATCH = "NUMBER(10)", 
-          COUNT_HAUL = "NUMBER(10)", 
-          HAULJOIN = "NUMBER(10)", 
-          SPECIES_CODE = "NUMBER(10)", 
-          CRUISE = "NUMBER(10)", 
-          CRUISEJOIN = "NUMBER(10)", 
-          STATION = "TO_CHAR()", 
-          STRATUM = "TO_CHAR()"
-        )        
         cc <- col_types[(names(col_types) %in% names(a))]
         
       }
