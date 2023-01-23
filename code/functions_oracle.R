@@ -173,16 +173,16 @@ oracle_upload <- function(
       ## Add the table to the schema ------------------------------------------------
       
       col_types <- list(
-        YEAR = "NUMBER(10)", 
+        YEAR = "NUMBER(38,0)",
         START_TIME = "TO_CHAR(START_TIME,'MM/DD/YYYY HH24:MI:SS')", 
-        COUNT_NUMBER = "NUMBER(10)", 
-        COUNT_LENGTH = "NUMBER(10)", 
-        COUNT_CATCH = "NUMBER(10)", 
-        COUNT_HAUL = "NUMBER(10)"#, 
-        # HAULJOIN = "NUMBER(10)", 
-        # SPECIES_CODE = "NUMBER(10)", 
-        # CRUISE = "NUMBER(10)", 
-        # CRUISEJOIN = "NUMBER(10)"#, 
+        COUNT_NUMBER = "NUMBER(38,0)", 
+        COUNT_LENGTH = "NUMBER(38,0)", 
+        COUNT_CATCH = "NUMBER(38,0)", 
+        COUNT_HAUL = "NUMBER(38,0)", 
+        HAULJOIN = "NUMBER(38,0)",
+        SPECIES_CODE = "NUMBER(38,0)",
+        CRUISE = "NUMBER(38,0)",
+        CRUISEJOIN = "NUMBER(38,0)"
         # STATION = "TEXT", 
         # STRATUM = "TEXT"
       )  
