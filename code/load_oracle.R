@@ -34,6 +34,14 @@ file.copy(from = paste0(dir_out, "metadata_table.csv"),
           to = paste0(getwd(), "/metadata_table.csv"), 
           overwrite = TRUE)
 
+file.copy(from = paste0(dir_out, "metadata_column_current.csv"), 
+          to = paste0(getwd(), "/metadata_column_current.csv"), 
+          overwrite = TRUE)
+
+file.copy(from = paste0(dir_out, "metadata_table_current.csv"), 
+          to = paste0(getwd(), "/metadata_table_current.csv"), 
+          overwrite = TRUE)
+
 file_paths <- data.frame(
   file_path = c(paste0(getwd(), "/METADATA_COLUMN.csv"), 
                 paste0(getwd(), "/METADATA_TABLE.csv")), 

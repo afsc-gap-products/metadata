@@ -40,7 +40,7 @@ Seattle, WA 98195
 
 # Metadata
 
-These metadata were last upated on January 18, 2023.
+These metadata were last upated on January 25, 2023.
 
 ## User resources
 
@@ -71,7 +71,7 @@ Markowitz, E. H., Dawson, E. J., Charriere, N. E., Prohaska, B. K.,
 Rohan, S. K., Stevenson, D. E., and Britt, L. L. (2022). *Results of the
 2021 eastern and northern Bering Sea continental shelf bottom trawl
 survey of groundfish and invertebrate fauna* \[NOAA Tech. Memo.\].
-<https://doi.org/10.25923/g1ny-y360>
+*NMFS-F/SPO-452*, 227. <https://doi.org/10.25923/g1ny-y360>
 
 </div>
 
@@ -190,14 +190,13 @@ sessionInfo()
 
     ## R version 4.2.0 (2022-04-22 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-    ## Running under: Windows 10 x64 (build 19044)
+    ## Running under: Windows 10 x64 (build 19045)
     ## 
     ## Matrix products: default
     ## 
     ## locale:
-    ## [1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8   
-    ## [3] LC_MONETARY=English_United States.utf8 LC_NUMERIC=C                          
-    ## [5] LC_TIME=English_United States.utf8    
+    ## [1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8    LC_MONETARY=English_United States.utf8
+    ## [4] LC_NUMERIC=C                           LC_TIME=English_United States.utf8    
     ## 
     ## attached base packages:
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
@@ -206,17 +205,15 @@ sessionInfo()
     ## [1] knitr_1.41     badger_0.2.2   RODBC_1.3-20   magrittr_2.0.3
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] highr_0.9           BiocManager_1.30.19 RColorBrewer_1.1-3  pillar_1.8.1        compiler_4.2.0     
-    ##  [6] yulab.utils_0.0.5   tools_4.2.0         readtext_0.81       digest_0.6.31       bit_4.0.5          
-    ## [11] jsonlite_1.8.4      gtable_0.3.1        evaluate_0.19       lifecycle_1.0.3     tibble_3.1.8       
-    ## [16] pkgconfig_2.0.3     rlang_1.0.6         cli_3.4.1           DBI_1.1.3           rstudioapi_0.14    
-    ## [21] rvcheck_0.2.1       yaml_2.3.6          parallel_4.2.0      xfun_0.35           fastmap_1.1.0      
-    ## [26] httr_1.4.4          withr_2.5.0         dplyr_1.0.10        stringr_1.5.0       dlstats_0.1.6      
-    ## [31] generics_0.1.3      vctrs_0.5.1         hms_1.1.2           grid_4.2.0          bit64_4.0.5        
-    ## [36] tidyselect_1.2.0    data.table_1.14.6   glue_1.6.2          R6_2.5.1            fansi_1.0.3        
-    ## [41] vroom_1.6.0         rmarkdown_2.19      ggplot2_3.4.0       tzdb_0.3.0          readr_2.1.3        
-    ## [46] scales_1.2.1        ellipsis_0.3.2      htmltools_0.5.4     assertthat_0.2.1    colorspace_2.0-3   
-    ## [51] utf8_1.2.2          stringi_1.7.8       munsell_0.5.0       crayon_1.5.2
+    ##  [1] tidyselect_1.2.0    xfun_0.35           janitor_2.1.0       snakecase_0.11.0    colorspace_2.0-3    vctrs_0.5.1         generics_0.1.3     
+    ##  [8] htmltools_0.5.4     yaml_2.3.6          utf8_1.2.2          rlang_1.0.6         readtext_0.81       pillar_1.8.1        glue_1.6.2         
+    ## [15] withr_2.5.0         DBI_1.1.3           bit64_4.0.5         RColorBrewer_1.1-3  rvcheck_0.2.1       lifecycle_1.0.3     stringr_1.5.0      
+    ## [22] dlstats_0.1.6       munsell_0.5.0       gtable_0.3.1        evaluate_0.19       tzdb_0.3.0          fastmap_1.1.0       parallel_4.2.0     
+    ## [29] fansi_1.0.3         highr_0.9           readr_2.1.3         scales_1.2.1        BiocManager_1.30.19 vroom_1.6.0         jsonlite_1.8.4     
+    ## [36] bit_4.0.5           ggplot2_3.4.0       hms_1.1.2           digest_0.6.31       stringi_1.7.8       dplyr_1.0.10        grid_4.2.0         
+    ## [43] cli_3.4.1           tools_4.2.0         yulab.utils_0.0.5   tibble_3.1.8        crayon_1.5.2        pkgconfig_2.0.3     ellipsis_0.3.2     
+    ## [50] data.table_1.14.6   timechange_0.1.1    lubridate_1.9.0     assertthat_0.2.1    rmarkdown_2.19      httr_1.4.4          rstudioapi_0.14    
+    ## [57] R6_2.5.1            compiler_4.2.0
 
 ## NOAA README
 
