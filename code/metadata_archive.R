@@ -5,7 +5,6 @@
 #' Notes: 
 #' -----------------------------------------------------------------------------
 
-
 # Table Metadata canned sentences ----------------------------------------------
 
 bibfiletext <- readLines(con = "https://raw.githubusercontent.com/afsc-gap-products/citations/main/cite/bibliography.bib")

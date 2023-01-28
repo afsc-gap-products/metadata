@@ -10,27 +10,51 @@
 
 # source("./code/run.r")
 
-# *** REPORT KNOWNS ------------------------------------------------------------
-
-# The surveys we will consider covering in this data are: 
-surveys <- 
-  data.frame(survey_definition_id = c(143, 98, 47, 52, 78), 
-             SRVY = c("NBS", "EBS", "GOA", "AI", "BSS"), 
-             SRVY_long = c("northern Bering Sea", 
-                           "eastern Bering Sea", 
-                           "Gulf of Alaska", 
-                           "Aleutian Islands", 
-                           "Bering Sea Slope") )
-
-# Support scripts --------------------------------------------------------------
-
 dir_out <- paste0(getwd(), "/metadata/", Sys.Date(), "/")
 dir.create(dir_out)
 
 library(magrittr)
+library(googledrive)
+library(xlsx)
+library(janitor)
+
+# Support scripts --------------------------------------------------------------
 
 source('./code/functions_oracle.R')
-source('./code/metadata.R')
+
+# sign into google drive -------------------------------------------------------
+
+googledrive::drive_deauth()
+googledrive::drive_auth()
+1
+
+# Load metadata ----------------------------------------------------------------
+
+# https://docs.google.com/spreadsheets/d/1wgAJPPWif1CC01iT2S6ZtoYlhOM0RSGFXS9LUggdLLA/edit?pli=1#gid=65110769
+googledrive::drive_download(
+  file = googledrive::as_id("1wgAJPPWif1CC01iT2S6ZtoYlhOM0RSGFXS9LUggdLLA"), 
+  path = paste0(dir_out, "future_oracle.xlsx"), 
+  overwrite = TRUE)
+
+# Column
+metadata_column <- xlsx::read.xlsx(
+  file = paste0(dir_out, "future_oracle.xlsx"), 
+  sheetName = "METADATA_COLUMN") %>% 
+  janitor::clean_names() %>% 
+  dplyr::select(-dplyr::starts_with("x"), -dplyr::starts_with("na"))
+  
+readr::write_csv(x = metadata_column, 
+                 file = paste0(dir_out, "metadata_column.csv"))
+
+# Table
+metadata_table <- xlsx::read.xlsx(
+  file = paste0(dir_out, "/future_oracle.xlsx"), 
+  sheetName = "METADATA_TABLE") %>% 
+  janitor::clean_names() %>% 
+  dplyr::select(-dplyr::starts_with("x"), -dplyr::starts_with("na"))
+
+readr::write_csv(x = metadata_table, 
+                 file = paste0(dir_out, "metadata_table.csv"))
 
 # Check work -------------------------------------------------------------------
 # Find all metadata currently used across oracle
@@ -39,7 +63,7 @@ source("./code/metadata_current.R")
 # Update README and Share table to oracle --------------------------------------
 
 # This is an accepted version of the data: 
-dir_out <- paste0(getwd(), "/metadata/2023-01-25/")
+dir_out <- paste0(getwd(), "/metadata/2023-01-27/")
 
 pretty_date <- format(
   x = as.Date(strsplit(x = dir_out, 

@@ -127,6 +127,7 @@ oracle_upload <- function(
     metadata_column, 
     channel, 
     schema, 
+    col_types = list(DUMMY = "VARCHAR2(225 BYTE)"),
     update_table = TRUE, 
     update_metadata = TRUE,
     share_with_all_users = TRUE) {
@@ -171,24 +172,6 @@ oracle_upload <- function(
       }
       
       ## Add the table to the schema ------------------------------------------------
-      
-      col_types <- list(
-        YEAR = "NUMBER(38,0)",
-        START_TIME = "TO_CHAR(START_TIME,'MM/DD/YYYY HH24:MI:SS')", 
-        COUNT_NUMBER = "NUMBER(38,0)", 
-        COUNT_LENGTH = "NUMBER(38,0)", 
-        COUNT_CATCH = "NUMBER(38,0)", 
-        COUNT_HAUL = "NUMBER(38,0)", 
-        HAULJOIN = "NUMBER(38,0)",
-        SPECIES_CODE = "NUMBER(38,0)",
-        CRUISE = "NUMBER(38,0)",
-        CRUISEJOIN = "NUMBER(38,0)", 
-        VESSEL = "NUMBER(38,0)",
-        STATION = "VARCHAR2(225 BYTE)",
-        STRATUM = "VARCHAR2(225 BYTE)", 
-        SRVY = "VARCHAR2(225 BYTE)", 
-        FILE = "VARCHAR2(225 BYTE)"
-      )  
       
       # find columns that need special data type help
       cc <- c()

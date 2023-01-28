@@ -41,6 +41,7 @@ locations <- c("RACE_LOADER", "RACEBASE_DEV",
                # SAFE
                "SAFE")
 
+
 oracle_dl_metadata(
   locations = locations, 
   channel = channel_products, 
