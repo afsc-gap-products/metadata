@@ -50,7 +50,7 @@ Seattle, WA 98195
 ```{r toc, echo = FALSE, eval = TRUE}
 toc <- strsplit(x = readtext::readtext(file = "./README.rmd")[[2]], split = "\n")
 toc <- toc[[1]][substr(x = toc[[1]], start = 1, stop = 1) == "#"]
-toc <- toc[-c(1)]
+toc <- toc[-c(1:2)]
 toc_list <- toc
 toc_list <- gsub(pattern = "#### ", replacement = ">        - [*", x = toc_list, fixed = TRUE)
 toc_list <- gsub(pattern = "### ", replacement = ">      - [*", x = toc_list, fixed = TRUE)
@@ -89,8 +89,10 @@ These metadata were last updated on `r pretty_date`.
 Here are some stock sentence users can use to document their tables:
 
 ```{r metadata_table, echo = FALSE}
-metadata_table0 <- read.csv(file = paste0(dir_out, "metadata_table.csv"))
-names(metadata_table0) <- c("Sentence Type", "Sentence")
+metadata_table0 <- read.csv(file = paste0(dir_out, "metadata_table.csv")) %>% 
+  dplyr::select(-metadata_sentence_type) %>% 
+  dplyr::rename("Sentence Type" = metadata_sentence_name, 
+                "Sentence" = metadata_sentence)
 knitr::kable(metadata_table0, row.names = FALSE) 
 ```
 
@@ -99,14 +101,19 @@ knitr::kable(metadata_table0, row.names = FALSE)
 Here are stock metadata that users can use to document their table columns: 
 
 ```{r column-metadata, echo = FALSE}
-metadata_column0 <- read.csv(file = paste0(dir_out, "metadata_column.csv"))
-names(metadata_column0) <- c("Column name from data", "Descriptive column Name", "Units", "Column description")
+metadata_column0 <- read.csv(file = paste0(dir_out, "metadata_column.csv")) %>% 
+  dplyr::select(
+    "Column name from data" = metadata_colname, 
+    "Descriptive column Name" = metadata_colname_long, 
+    "Units" = metadata_units, 
+    "Oracle data type" = metadata_datatype, 
+    "Column description" = metadata_colname_desc)
 knitr::kable(metadata_column0, row.names = FALSE) 
 ```
 
 # Access the data in Oracle
 
-Check out the `functions_oracle.R` script. 
+Find the `GAP_PRODUCTS.METADATA_COLUMN` and `GAP_PRODUCTS.METADATA_TABLE` in oracle for the tables above. Check out the `functions_oracle.R` script for funtions for downloading or uploading data to oracle. 
 
 # Suggestions and comments
 
