@@ -26,7 +26,6 @@ Seattle, WA 98195
 
 ## Table of contents
 
-> - [*Table of contents*](#table-of-contents)
 > - [*Metadata*](#metadata)
 >   - [*User resources*](#user-resources)
 >   - [*Relevant technical
