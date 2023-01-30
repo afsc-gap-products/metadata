@@ -26,29 +26,20 @@ source("Z:/Projects/ConnectToOracle.R")
 
 print("upload latest metadata reference tables to oracle!")
 
-file.copy(from = paste0(dir_out, "metadata_column.csv"), 
-          to = paste0(getwd(), "/metadata_column.csv"), 
+a <- list.files(path = dir_out, full.names = TRUE, pattern = "metadata_")
+for (i in 1:length(a)) {
+file.copy(from = a, 
+          to = gsub(pattern = dir_out, replacement = paste0(getwd(), "/metadata/"), x = a), 
           overwrite = TRUE)
-
-file.copy(from = paste0(dir_out, "metadata_table.csv"), 
-          to = paste0(getwd(), "/metadata_table.csv"), 
-          overwrite = TRUE)
-
-file.copy(from = paste0(dir_out, "metadata_column_current.csv"), 
-          to = paste0(getwd(), "/metadata_column_current.csv"), 
-          overwrite = TRUE)
-
-file.copy(from = paste0(dir_out, "metadata_table_current.csv"), 
-          to = paste0(getwd(), "/metadata_table_current.csv"), 
-          overwrite = TRUE)
+}
 
 file_paths <- data.frame(
-  file_path = c(paste0(getwd(), "/METADATA_COLUMN.csv"), 
-                paste0(getwd(), "/METADATA_TABLE.csv")), 
+  file_path = c(paste0(dir_out, "/METADATA_COLUMN.csv"), 
+                paste0(dir_out, "/METADATA_TABLE.csv")), 
   table_metadata = c(
-    paste0("These tables provide the column metadata for all GAP oracle tables. These reference tables were last updated on ", pretty_date, ". "), 
-    paste0("These tables provide the table metadata for all GAP oracle tables. These reference tables were last updated on ", pretty_date, ". "))
-) 
+    paste(readLines(con = paste0(dir_out, "metadata_column_metadata_column.txt")), collapse="\n"), 
+    paste(readLines(con = paste0(dir_out, "metadata_table_metadata_table.txt")), collapse="\n"))
+)
 
 oracle_upload(
     file_paths = file_paths, 

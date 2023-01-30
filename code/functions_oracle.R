@@ -127,7 +127,7 @@ oracle_upload <- function(
     metadata_column, 
     channel, 
     schema, 
-    col_types = list(DUMMY = "VARCHAR2(225 BYTE)"),
+    # col_types = list(DUMMY = "VARCHAR2(225 BYTE)"),
     update_table = TRUE, 
     update_metadata = TRUE,
     share_with_all_users = TRUE) {
@@ -163,6 +163,7 @@ oracle_upload <- function(
       
       ## Drop old table from oracle -------------------------------------------------
       # if the table is currently in the schema, drop the table before re-uploading
+      
       if (file_name %in% 
           unlist(RODBC::sqlQuery(channel = channel, 
                                  query = "SELECT table_name FROM user_tables;"))) {
@@ -174,15 +175,24 @@ oracle_upload <- function(
       ## Add the table to the schema ------------------------------------------------
       
       # find columns that need special data type help
+      metadata_column0 <- metadata_column[which(metadata_column$metadata_colname %in% names(a)),] %>% 
+        dplyr::filter(!is.na(metadata_units))
+      
       cc <- c()
-      if (sum(names(col_types) %in% names(a))>0) {
-        cc <- col_types[(names(col_types) %in% names(a))]
+      if (nrow(metadata_column0)>0) {
+        # cc <- col_types[(names(col_types) %in% names(a))]
+        eval( parse(text = 
+                      paste0("cc <- list(", 
+                     paste0("'", metadata_column0$metadata_colname, "' = '", 
+                            metadata_column0$metadata_datatype, "'", 
+                            collapse = ",\n"), 
+                     ")") ))
       }
       
       eval( parse(text = 
                     paste0("RODBC::sqlSave(channel = channel, dat = ",
                            file_name, 
-                           ifelse(length(cc)<1, 
+                           ifelse(length(cc)==0, 
                                   ")", 
                                   paste0(", varTypes = cc)") )) ) ) 
     }

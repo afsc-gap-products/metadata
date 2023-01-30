@@ -1,7 +1,0 @@
-metadata_sentence_type,metadata_sentence
-survey_institution,"in the northern Bering Sea (NBS), eastern Bering Sea (EBS), Gulf of Alaska (GOA), Aleutian Islands (AI), Bering Sea Slope (BSS) Surveys conducted by the Resource Assessment and Conservation Engineering Division (RACE) Groundfish Assessment Program (GAP) of the Alaska Fisheries Science Center (AFSC). "
-legal_restrict,There are no legal restrictions on access to the data. 
-foss,The data from this dataset are shared on the Fisheries One Stop Stop (FOSS) platform (https://www.fisheries.noaa.gov/foss/f?p=215:28:2283554735243:::::). 
-github,The GitHub repository for the scripts that created this code can be found at INSERT_REPO. 
-last_updated,These data were last updated INSERT_DATE. 
-codebook,"For more information about codes used in the tables, please refer to the survey code books (https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "

@@ -12,6 +12,8 @@
 
 dir_out <- paste0(getwd(), "/metadata/", Sys.Date(), "/")
 dir.create(dir_out)
+link_repo <- "https://github.com/afsc-gap-products/metadata/"
+
 
 library(magrittr)
 library(googledrive)
@@ -28,33 +30,7 @@ googledrive::drive_deauth()
 googledrive::drive_auth()
 1
 
-# Load metadata ----------------------------------------------------------------
-
-# https://docs.google.com/spreadsheets/d/1wgAJPPWif1CC01iT2S6ZtoYlhOM0RSGFXS9LUggdLLA/edit?pli=1#gid=65110769
-googledrive::drive_download(
-  file = googledrive::as_id("1wgAJPPWif1CC01iT2S6ZtoYlhOM0RSGFXS9LUggdLLA"), 
-  path = paste0(dir_out, "future_oracle.xlsx"), 
-  overwrite = TRUE)
-
-# Column
-metadata_column <- xlsx::read.xlsx(
-  file = paste0(dir_out, "future_oracle.xlsx"), 
-  sheetName = "METADATA_COLUMN") %>% 
-  janitor::clean_names() %>% 
-  dplyr::select(-dplyr::starts_with("x"), -dplyr::starts_with("na"))
-  
-readr::write_csv(x = metadata_column, 
-                 file = paste0(dir_out, "metadata_column.csv"))
-
-# Table
-metadata_table <- xlsx::read.xlsx(
-  file = paste0(dir_out, "/future_oracle.xlsx"), 
-  sheetName = "METADATA_TABLE") %>% 
-  janitor::clean_names() %>% 
-  dplyr::select(-dplyr::starts_with("x"), -dplyr::starts_with("na"))
-
-readr::write_csv(x = metadata_table, 
-                 file = paste0(dir_out, "metadata_table.csv"))
+source("./code/metadata_dl.R") 
 
 # Check work -------------------------------------------------------------------
 # Find all metadata currently used across oracle
@@ -63,7 +39,7 @@ source("./code/metadata_current.R")
 # Update README and Share table to oracle --------------------------------------
 
 # This is an accepted version of the data: 
-dir_out <- paste0(getwd(), "/metadata/2023-01-27/")
+dir_out <- paste0(getwd(), "/metadata/2023-01-29/")
 
 pretty_date <- format(
   x = as.Date(strsplit(x = dir_out, 
