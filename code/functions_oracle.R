@@ -107,11 +107,12 @@ oracle_dl <- function(
 #' # channel <- oracle_connect()
 #' # write.csv(x = data.frame(dummy = "blah blah"), 
 #' #          file = "./dummy.csv")
-#' # metadata_column <- data.frame(
-#' #   colname = "dummy", # name of column 
-#' #   colname_desc = "Dummy", #  long name of column
-#' #   units = "text", # units the column is in
-#' #   desc = "Dummy example column") #  description of column
+#' # metadata_column = data.frame(
+#' #   metadata_colname = "DUMMY",
+#' #   metadata_colname_long = "example dummy column", 
+#' #   metadata_units = "text", 
+#' #   metadata_datatype = "VARCHAR2(225 BYTE)", 
+#' #   metadata_colname_desc = "dummy.")
 #' # file_paths <- data.frame(file_path = "./dummy.csv", 
 #' #                          table_metadata = Sys.Date())
 #' # oracle_upload <- function(
@@ -124,10 +125,14 @@ oracle_dl <- function(
 #' #     share_with_all_users = TRUE)
 oracle_upload <- function(
     file_paths, 
-    metadata_column, 
+    metadata_column = data.frame(
+      metadata_colname = "DUMMY", 
+      metadata_colname_long = "example dummy column", 
+      metadata_units = "text", 
+      metadata_datatype = "VARCHAR2(225 BYTE)", 
+      metadata_colname_desc = "dummy."), 
     channel, 
     schema, 
-    # col_types = list(DUMMY = "VARCHAR2(225 BYTE)"),
     update_table = TRUE, 
     update_metadata = TRUE,
     share_with_all_users = TRUE) {
