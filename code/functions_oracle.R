@@ -23,6 +23,7 @@ oracle_connect <- function(schema='AFSC',
                                    paste(username),
                                    paste(password), 
                                    believeNRows=FALSE)
+    return(channel)
   }
   
 
