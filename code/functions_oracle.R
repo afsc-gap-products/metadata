@@ -8,24 +8,27 @@
 #' @examples
 #' # Not run
 #' # channel <- oracle_connect()
-oracle_connect <- function(schema='AFSC', 
-                             username = NULL, 
-                             passowrd = NULL){(echo=FALSE)
-    library("RODBC")
-    library("getPass")
-    if (is.null(username)) {
-      username <- getPass(msg = "Enter your ORACLE Username: ")
-    }
-    if (is.null(password)) {
-      password <- getPass(msg = "Enter your ORACLE Password: ")
-    }
-    channel  <- RODBC::odbcConnect(paste(schema),
-                                   paste(username),
-                                   paste(password), 
-                                   believeNRows=FALSE)
-    return(channel)
-  }
+oracle_connect <- function(
+    schema='AFSC', 
+    username = NULL, 
+    passowrd = NULL){(echo=FALSE)
   
+  library("RODBC")
+  library("getPass")
+  if (is.null(username)) {
+    username <- getPass(msg = "Enter your ORACLE Username: ")
+  }
+  if (is.null(password)) {
+    password <- getPass(msg = "Enter your ORACLE Password: ")
+  }
+  channel  <- RODBC::odbcConnect(
+    paste(schema),
+    paste(username),
+    paste(password), 
+    believeNRows=FALSE)
+  return(channel)
+}
+
 
 #' Download tables fro oracle
 #'
@@ -117,7 +120,7 @@ oracle_dl <- function(
 #' # file_paths <- data.frame(file_path = "./dummy.csv", 
 #' #                          table_metadata = Sys.Date())
 #' # oracle_upload <- function(
-#' #     file_paths = file_paths, 
+    #' #     file_paths = file_paths, 
 #' #     metadata_column = metadata_column, 
 #' #     channel = channel,
 #' #     schema = "GAP_PRODUCTS",  
@@ -188,10 +191,10 @@ oracle_upload <- function(
       if (nrow(metadata_column0)>0) {
         eval( parse(text = 
                       paste0("cc <- list(", 
-                     paste0("'", metadata_column0$metadata_colname, "' = '", 
-                            metadata_column0$metadata_datatype, "'", 
-                            collapse = ",\n"), 
-                     ")") ))
+                             paste0("'", metadata_column0$metadata_colname, "' = '", 
+                                    metadata_column0$metadata_datatype, "'", 
+                                    collapse = ",\n"), 
+                             ")") ))
       }
       
       eval( parse(text = 
@@ -288,8 +291,8 @@ oracle_dl_metadata <- function(
     # owner, table_name"))
     
     a_table <- dplyr::bind_rows(a_table, 
-                              a %>% 
-                                dplyr::mutate(schema = loc))
+                                a %>% 
+                                  dplyr::mutate(schema = loc))
     
     
     # -COLUMN METDATA QUIERY FROM NANCY
@@ -315,8 +318,8 @@ oracle_dl_metadata <- function(
                                         loc,"' AND comments IS NOT NULL AND comments IS NOT NULL GROUP BY table_name, comments ORDER BY table_name ASC"))
     
     a_col <- dplyr::bind_rows(a_col, 
-                                a %>% 
-                                  dplyr::mutate(schema = loc))
+                              a %>% 
+                                dplyr::mutate(schema = loc))
     
   }
   
