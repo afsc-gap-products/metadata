@@ -137,6 +137,7 @@ oracle_upload <- function(
     update_metadata = TRUE,
     share_with_all_users = TRUE) {
   
+  names(metadata_column) <- tolower(names(metadata_column))
   metadata_column$metadata_colname <- toupper(metadata_column$metadata_colname)
   
   all_schemas <- RODBC::sqlQuery(channel = channel,
@@ -183,9 +184,7 @@ oracle_upload <- function(
       metadata_column0 <- metadata_column[which(metadata_column$metadata_colname %in% names(a)),] %>% 
         dplyr::filter(!is.na(metadata_units))
       
-      cc <- c()
       if (nrow(metadata_column0)>0) {
-        # cc <- col_types[(names(col_types) %in% names(a))]
         eval( parse(text = 
                       paste0("cc <- list(", 
                      paste0("'", metadata_column0$metadata_colname, "' = '", 
