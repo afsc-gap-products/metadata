@@ -2,7 +2,7 @@ metadata_sentence_name,metadata_sentence_type,metadata_sentence
 survey_institution,fragment,by the Resource Assessment and Conservation Engineering Division (RACE) Groundfish Assessment Program (GAP) of the Alaska Fisheries Science Center (AFSC).
 legal_restrict,sentence,There are no legal restrictions on access to the data.
 foss,sentence,The data from this dataset are shared on the Fisheries One Stop Stop (FOSS) platform (https://www.fisheries.noaa.gov/foss/f?p=215:28:2283554735243:::::).
-github,sentence,The GitHub repository for the scripts that created this code can be found at 'INSERT_REPO'.
+github,sentence,The GitHub repository for the scripts that created this code can be found at INSERT_REPO.
 last_updated,sentence,These data were last updated INSERT_DATE.
-codebook,sentence,"For more information about codes used in the tables, please refer to the survey code books (INSERT_CODE_BOOK)."
+codebook,sentence,"For more information about codes used in the tables, please refer to the survey code books (https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
 surveys,fragment,"the northern Bering Sea (NBS), eastern Bering Sea (EBS), Gulf of Alaska (GOA), Aleutian Islands (AI), Bering Sea Slope (BSS) Surveys "

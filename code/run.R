@@ -51,4 +51,13 @@ rmarkdown::render(paste0("./README.Rmd"),
                   output_dir = "./",
                   output_file = paste0("README.md"))
 
+# quarto::quarto_render(
+#   input = "./README.qmd", 
+#   output_format = "md",  
+#   execute_dir = getwd(), 
+#   output_file = "README.md", 
+#   execute_params = list(
+#     link_repo = link_repo, 
+#     dir_out = dir_out))
+
 source("./code/load_oracle.R") 

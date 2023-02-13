@@ -1,7 +1,6 @@
 ---
-output: 
-  md_document: 
-    variant: gfm
+format: md
+editor: visual
 csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/apa-no-ampersand.csl"
 bibliography: "https://raw.githubusercontent.com/afsc-gap-products/citations/main/cite/bibliography.bib"
 ---
@@ -44,6 +43,8 @@ Alaska Fisheries Science Center,
 National Marine Fisheries Service,  
 National Oceanic and Atmospheric Administration,  
 Seattle, WA 98195
+
+> The code is in development. To make edits to the README, please instead edit the [README.qmd](`r paste(link_repo, "blob/main/README.md")`) file. 
 
 ## Table of contents
 

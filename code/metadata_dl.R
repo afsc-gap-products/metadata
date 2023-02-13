@@ -18,7 +18,8 @@ link_foss <- gsub(pattern = "howpublished = {", replacement = "", x = link_foss,
 link_foss <- gsub(pattern = "},", replacement = "", x = link_foss, fixed = TRUE)
 INSERT_FOSS <- link_foss <- trimws(link_foss)
 
-INSERT_CODE_BOOK <- "https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual"
+INSERT_CODE_BOOK <- #link_code_books <- 
+  "https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual"
 
 pretty_date <- format(
   x = as.Date(strsplit(x = dir_out, 
@@ -44,12 +45,13 @@ metadata_table <- xlsx::read.xlsx(
   dplyr::select(-dplyr::starts_with("x"), -dplyr::starts_with("na")) %>% 
   dplyr::filter(!is.na(metadata_sentence_name)) %>% 
   dplyr::mutate(
-    metadata_sentence = gsub(pattern = "INSERT_FOSS", replacement = INSERT_FOSS, x = metadata_sentence))
+    metadata_sentence = gsub(pattern = "INSERT_FOSS", replacement = INSERT_FOSS, x = metadata_sentence), 
+    metadata_sentence = gsub(pattern = "INSERT_CODE_BOOK", replacement = INSERT_CODE_BOOK, x = metadata_sentence))
 
 
 temp <- metadata_table$metadata_sentence[metadata_table$metadata_sentence_name == "github"]
 temp <- paste0(gsub(pattern = "INSERT_REPO", replacement = link_repo, x = temp), 
-               "These reference tables were last updated on '", pretty_date, "'. ")
+               " These reference tables were last updated on ", pretty_date, "'. ")
 
 readr::write_csv(x = metadata_table, 
                  file = paste0(dir_out, "metadata_table.csv"))
@@ -67,6 +69,7 @@ metadata_column <- xlsx::read.xlsx(
   dplyr::filter(!is.na(metadata_colname)) %>% 
   dplyr::mutate(
     metadata_colname_desc = gsub(pattern = "INSERT_CODE_BOOK", replacement = INSERT_CODE_BOOK, x = metadata_colname_desc), 
+    # metadata_colname_desc = gsub(pattern = "link_code_books", replacement = link_code_books, x = metadata_colname_desc), 
     metadata_colname_desc = gsub(pattern = "  ", replacement = " ", x = metadata_colname_desc, fixed = TRUE), 
     metadata_colname_desc = gsub(pattern = "..", replacement = ".", x = metadata_colname_desc, fixed = TRUE))
 
