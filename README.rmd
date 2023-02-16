@@ -35,7 +35,6 @@ Research Fisheries Biologist
 Fisheries Biologist  
 *Bering Sea Groundfish Survey Team*
 
-
 **Alex Dowlin** (Alexandra.Dowlin AT noaa.gov; [\@AlexandraDowlin-NOAA](https://github.com/AlexandraDowlin-NOAA))
 Fisheries Biologist  
 *Gulf of Alaska and Aleutian Islands Groundfish Survey Team*
@@ -78,6 +77,7 @@ These metadata were last updated on `r pretty_date`.
 -   Find [past reports](http://apps-afsc.fisheries.noaa.gov/RACE/surveys/cruise_results.htm) about these surveys.
 -   [GitHub repository](`r link_repo`).
 -   Learn more about other [Research Surveys conducted at AFSC](https://www.fisheries.noaa.gov/alaska/ecosystems/alaska-fish-research-surveys).
+
 ## Relevant technical memorandums
 
 [@2021NEBS2022]

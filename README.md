@@ -61,7 +61,8 @@ These metadata were last updated on February 16, 2023.
 - [GitHub repository](https://github.com/afsc-gap-products/metadata/).
 - Learn more about other [Research Surveys conducted at
   AFSC](https://www.fisheries.noaa.gov/alaska/ecosystems/alaska-fish-research-surveys).
-  \## Relevant technical memorandums
+
+## Relevant technical memorandums
 
 (Markowitz et al., 2022) (Von Szalay and Raring, 2018) (Von Szalay and
 Raring, 2020)
