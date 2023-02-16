@@ -39,7 +39,7 @@ source("./code/metadata_current.R")
 # Update README and Share table to oracle --------------------------------------
 
 # This is an accepted version of the data: 
-dir_out <- paste0(getwd(), "/metadata/2023-02-12/")
+dir_out <- paste0(getwd(), "/metadata/2023-02-16/")
 
 pretty_date <- format(
   x = as.Date(strsplit(x = dir_out, 
