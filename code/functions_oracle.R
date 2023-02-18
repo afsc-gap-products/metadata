@@ -203,6 +203,15 @@ oracle_upload <- function(
                            ifelse(length(cc)==0, 
                                   ")", 
                                   paste0(", varTypes = cc)") )) ) ) 
+      
+     
+      # remove rownames column from table (seems to happen automatically)
+      # alter table "GAP_PRODUCTS"."OLD_COMP_AGE_SIZE_STRATUM" drop column "rownames" 
+      RODBC::sqlQuery(channel = channel,
+                      query = paste0('alter table ',schema,'.',file_name,
+                                     ' drop column "rownames";'))
+      
+       
     }
     
     if (update_metadata) {
