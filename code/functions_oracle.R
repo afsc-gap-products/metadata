@@ -144,9 +144,6 @@ oracle_upload <- function(
   names(metadata_column) <- tolower(names(metadata_column))
   metadata_column$metadata_colname <- toupper(metadata_column$metadata_colname)
   
-  all_schemas <- RODBC::sqlQuery(channel = channel,
-                                 query = paste0('SELECT * FROM all_users;'))
-  
   # Loop through each table to add to oracle -------------------------------------
   
   for (ii in 1:nrow(file_paths)) {
@@ -188,6 +185,7 @@ oracle_upload <- function(
       metadata_column0 <- metadata_column[which(metadata_column$metadata_colname %in% names(a)),] %>% 
         dplyr::filter(!is.na(metadata_units))
       
+        cc <- c()
       if (nrow(metadata_column0)>0) {
         eval( parse(text = 
                       paste0("cc <- list(", 
@@ -243,6 +241,9 @@ oracle_upload <- function(
     }
     ## grant access to all schemes ------------------------------------------------
     for (iii in 1:length(sort(all_schemas$USERNAME))) {
+          all_schemas <- RODBC::sqlQuery(channel = channel,
+                                 query = paste0('SELECT * FROM all_users;'))
+        
       RODBC::sqlQuery(channel = channel,
                       query = paste0('grant select on ',schema,'.',file_name,
                                      ' to ', all_schemas$USERNAME[iii],';'))
