@@ -240,9 +240,10 @@ oracle_upload <- function(
                                      file_paths$table_metadata[ii],'\';'))
     }
     ## grant access to all schemes ------------------------------------------------
+    all_schemas <- RODBC::sqlQuery(channel = channel,
+                                   query = paste0('SELECT * FROM all_users;'))
+    
     for (iii in 1:length(sort(all_schemas$USERNAME))) {
-          all_schemas <- RODBC::sqlQuery(channel = channel,
-                                 query = paste0('SELECT * FROM all_users;'))
         
       RODBC::sqlQuery(channel = channel,
                       query = paste0('grant select on ',schema,'.',file_name,
