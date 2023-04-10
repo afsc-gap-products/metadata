@@ -34,12 +34,12 @@ source("./code/metadata_dl.R")
 
 # Check work -------------------------------------------------------------------
 # Find all metadata currently used across oracle
-source("./code/metadata_current.R") 
+# source("./code/metadata_current.R") 
 
 # Update README and Share table to oracle --------------------------------------
 
 # This is an accepted version of the data: 
-dir_out <- paste0(getwd(), "/metadata/2023-02-17/")
+dir_out <- paste0(getwd(), "/metadata/2023-04-09/")
 
 pretty_date <- format(
   x = as.Date(strsplit(x = dir_out, 
@@ -47,17 +47,7 @@ pretty_date <- format(
                        fixed = TRUE)[[1]][length(strsplit(x = dir_out, split = "/", fixed = TRUE)[[1]])]), 
   "%B %d, %Y")
 
-rmarkdown::render(paste0("./README.Rmd"),
-                  output_dir = "./",
-                  output_file = paste0("README.md"))
-
-# quarto::quarto_render(
-#   input = "./README.qmd", 
-#   output_format = "md",  
-#   execute_dir = getwd(), 
-#   output_file = "README.md", 
-#   execute_params = list(
-#     link_repo = link_repo, 
-#     dir_out = dir_out))
+rmarkdown::render(input = "README.Rmd",
+                  output_file = "README.md")
 
 source("./code/load_oracle.R") 

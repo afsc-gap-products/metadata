@@ -27,7 +27,7 @@ for (i in 1:length(locations)){
 
 # Upload data to oracle! -------------------------------------------------------
 
-print("upload latest metadata reference tables to oracle!")
+print("Upload latest metadata reference tables to oracle!")
 
 a <- list.files(path = dir_out, full.names = TRUE, pattern = "metadata_")
 for (i in 1:length(a)) {
@@ -39,13 +39,16 @@ file.copy(from = a,
 file_paths <- data.frame(
   file_path = c(paste0(dir_out, "/METADATA_COLUMN.csv"), 
                 paste0(dir_out, "/METADATA_TABLE.csv")), 
-  table_metadata = c(
+  metadata_table = c(
     paste(readLines(con = paste0(dir_out, "metadata_column_metadata_column.txt")), collapse="\n"), 
     paste(readLines(con = paste0(dir_out, "metadata_table_metadata_table.txt")), collapse="\n"))
 )
 
+for (i in 1:length(file_paths)) {
 oracle_upload(
-    file_paths = file_paths, 
+    file_path = file_paths$file_path[i],
+    metadata_table = file_paths$metadata_table[i], 
     metadata_column = metadata_column, 
     channel = channel_products, 
     schema = "GAP_PRODUCTS")
+}

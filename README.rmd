@@ -23,7 +23,7 @@ for (p in PKG) {
 }
 ```
 
-# [AFSC RACE Groundfish and Shellfish Survey MetaData](`r link_repo`) <img src="https://avatars.githubusercontent.com/u/91760178?s=96&amp;v=4" alt="Logo." align="right" width="139" height="139"/>
+# [AFSC RACE Groundfish and Shellfish Survey Metadata](`r link_repo`) <img src="https://avatars.githubusercontent.com/u/91760178?s=96&amp;v=4" alt="Logo." align="right" width="139" height="139"/>
 
 ## This code is primarily maintained by:
 
@@ -44,7 +44,7 @@ National Marine Fisheries Service,
 National Oceanic and Atmospheric Administration,  
 Seattle, WA 98195
 
-> The code is in development. To make edits to the README, please instead edit the [README.qmd](`r paste(link_repo, "blob/main/README.md")`) file. 
+> The code is in development. To make edits to the README, please instead edit the [README.rmd](`r paste(link_repo, "blob/main/README.rmd")`) file. 
 
 ## Table of contents
 
@@ -113,9 +113,9 @@ metadata_column0 <- read.csv(file = paste0(dir_out, "metadata_column.csv")) %>%
 knitr::kable(metadata_column0, row.names = FALSE) 
 ```
 
-# Access the data in Oracle
+# Access in Oracle
 
-Find the `GAP_PRODUCTS.METADATA_COLUMN` and `GAP_PRODUCTS.METADATA_TABLE` in oracle for the tables above. Check out the `functions_oracle.R` script for funtions for downloading or uploading data to oracle. 
+For internal use only. Find the `GAP_PRODUCTS.METADATA_COLUMN` and `GAP_PRODUCTS.METADATA_TABLE` in oracle for the tables above. Check out the `functions_oracle.R` script for funtions for downloading or uploading data to oracle. 
 
 # Suggestions and comments
 

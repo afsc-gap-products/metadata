@@ -7,16 +7,16 @@
 
 # Table Metadata canned sentences ----------------------------------------------
 
-bibfiletext <- readLines(con = "https://raw.githubusercontent.com/afsc-gap-products/citations/main/cite/bibliography.bib")
-find_start <- grep(pattern = "FOSSAFSCData", x = bibfiletext, fixed = TRUE)
-find_end <- which(bibfiletext == "}")
-find_end <- find_end[find_end>find_start][1]
-a <- bibfiletext[find_start:find_end]
-
-link_foss <- a[grep(pattern = "howpublished = {", x = a, fixed = TRUE)]
-link_foss <- gsub(pattern = "howpublished = {", replacement = "", x = link_foss, fixed = TRUE)
-link_foss <- gsub(pattern = "},", replacement = "", x = link_foss, fixed = TRUE)
-INSERT_FOSS <- link_foss <- trimws(link_foss)
+# bibfiletext <- readLines(con = "https://raw.githubusercontent.com/afsc-gap-products/citations/main/cite/bibliography.bib")
+# find_start <- grep(pattern = "FOSSAFSCData", x = bibfiletext, fixed = TRUE)
+# find_end <- which(bibfiletext == "}")
+# find_end <- find_end[find_end>find_start][1]
+# a <- bibfiletext[find_start:find_end]
+# 
+# link_foss <- a[grep(pattern = "howpublished = {", x = a, fixed = TRUE)]
+# link_foss <- gsub(pattern = "howpublished = {", replacement = "", x = link_foss, fixed = TRUE)
+# link_foss <- gsub(pattern = "},", replacement = "", x = link_foss, fixed = TRUE)
+# INSERT_FOSS <- link_foss <- trimws(link_foss)
 
 INSERT_CODE_BOOK <- #link_code_books <- 
   "https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual"
@@ -45,7 +45,7 @@ metadata_table <- xlsx::read.xlsx(
   dplyr::select(-dplyr::starts_with("x"), -dplyr::starts_with("na")) %>% 
   dplyr::filter(!is.na(metadata_sentence_name)) %>% 
   dplyr::mutate(
-    metadata_sentence = gsub(pattern = "INSERT_FOSS", replacement = INSERT_FOSS, x = metadata_sentence), 
+    # metadata_sentence = gsub(pattern = "INSERT_FOSS", replacement = INSERT_FOSS, x = metadata_sentence), 
     metadata_sentence = gsub(pattern = "INSERT_CODE_BOOK", replacement = INSERT_CODE_BOOK, x = metadata_sentence))
 
 
@@ -63,9 +63,10 @@ readr::write_lines(x = paste0("These column provide the column metadata for all 
 ## Column ----------------------------------------------------------------------
 metadata_column <- xlsx::read.xlsx(
   file = paste0(dir_out, "future_oracle.xlsx"), 
-  sheetName = "METADATA_COLUMN") %>% 
+  sheetName = "METADATA_COLUMN", 
+  startRow = 2) %>% 
   janitor::clean_names() %>% 
-  dplyr::select(-dplyr::starts_with("x"), -dplyr::starts_with("na")) %>% 
+  dplyr::select(dplyr::starts_with("metadata_")) %>% 
   dplyr::filter(!is.na(metadata_colname)) %>% 
   dplyr::mutate(
     metadata_colname_desc = gsub(pattern = "INSERT_CODE_BOOK", replacement = INSERT_CODE_BOOK, x = metadata_colname_desc), 

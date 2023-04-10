@@ -92,10 +92,167 @@ oracle_dl <- function(
   }
 }
 
+#' Upload new tables to oracle
+#'
+#' @param file_paths A data frame where each row is 
+#' @param metadata_column A data.frame of all possible column metadata your tables will need affixed. 
+#' @param channel Establish your oracle connection using a function like oracle_connect. 
+#' @param schema Character. The name of the schema these tables should be saved to. 
+#' @param update_table T/F. Default = TRUE. Save or drop and save the table in Oracle. 
+#' @param update_metadata T/F. Default = TRUE. Add table and column metadata to the tables. 
+#' @param share_with_all_users T/F. Default = TRUE. Give all users in oracle view permissions. 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' # Not run: 
+#' # channel <- oracle_connect()
+#' # write.csv(x = data.frame(dummy = "blah blah"), 
+#' #          file = "./dummy.csv")
+#' # metadata_column = data.frame(
+#' #   metadata_colname = "DUMMY",
+#' #   metadata_colname_long = "example dummy column", 
+#' #   metadata_units = "text", 
+#' #   metadata_datatype = "VARCHAR2(225 BYTE)", 
+#' #   metadata_colname_desc = "dummy.")
+#' # oracle_upload <- function(
+#' #     file_path = "./dummy.csv", 
+#' #     metadata_table = Sys.Date(), 
+#' #     metadata_column = metadata_column, 
+#' #     channel = channel,
+#' #     schema = "GAP_PRODUCTS",  
+#' #     update_table = TRUE, 
+#' #     update_metadata = TRUE,
+#' #     share_with_all_users = TRUE)
+oracle_upload <- function(
+    file_path, 
+    metadata_table = "", 
+    metadata_column = data.frame(
+      metadata_colname = "DUMMY", 
+      metadata_colname_long = "example dummy column", 
+      metadata_units = "text", 
+      metadata_datatype = "VARCHAR2(225 BYTE)", 
+      metadata_colname_desc = "dummy."), 
+    channel, 
+    schema, 
+    update_table = TRUE, 
+    update_metadata = TRUE,
+    share_with_all_users = TRUE) {
+  
+  names(metadata_column) <- tolower(names(metadata_column))
+  metadata_column$metadata_colname <- toupper(metadata_column$metadata_colname)
+  
+  # Loop through each table to add to oracle -------------------------------------
+    
+    print(file_path)
+    file_name <- trimws(toupper(file_path))
+    file_name <- strsplit(x = file_name, split = "/", fixed = TRUE)[[1]]
+    file_name <- strsplit(x = file_name[length(file_name)], split = ".", fixed = TRUE)
+    file_name <- file_name[[1]][1]
+    
+    a <- read.csv(file_path)
+    names(a) <- toupper(names(a))
+    
+    if (names(a)[1] %in% "X") {
+      a$X<-NULL
+    }
+    
+    rownames(a) <- NULL
+    names(a) <- toupper(names(a))
+    
+    assign(x = file_name, value = a)
+    
+    if (update_table) {
+      
+      ## Drop old table from oracle -------------------------------------------------
+      # if the table is currently in the schema, drop the table before re-uploading
+      
+      if (file_name %in% 
+          unlist(RODBC::sqlQuery(channel = channel, 
+                                 query = "SELECT table_name FROM user_tables;"))) {
+        
+        RODBC::sqlDrop(channel = channel,
+                       sqtable = file_name)
+      }
+      
+      ## Add the table to the schema ------------------------------------------------
+      
+      # find columns that need special data type help
+      metadata_column0 <- metadata_column[which(metadata_column$metadata_colname %in% names(a)),] %>% 
+        dplyr::filter(!is.na(metadata_units))
+      
+      cc <- c()
+      if (nrow(metadata_column0)>0) {
+        eval( parse(text = 
+                      paste0("cc <- list(", 
+                             paste0("'", metadata_column0$metadata_colname, "' = '", 
+                                    metadata_column0$metadata_datatype, "'", 
+                                    collapse = ",\n"), 
+                             ")") ))
+      }
+      
+      eval( parse(text = 
+                    paste0("RODBC::sqlSave(channel = channel, dat = ",
+                           file_name, 
+                           ifelse(length(cc)==0, 
+                                  ")", 
+                                  paste0(", varTypes = cc)") )) ) ) 
+      
+      
+      # remove rownames column from table (seems to happen automatically)
+      # alter table "GAP_PRODUCTS"."OLD_COMP_AGE_SIZE_STRATUM" drop column "rownames" 
+      RODBC::sqlQuery(channel = channel,
+                      query = paste0('alter table ',schema,'.',file_name,
+                                     ' drop column "rownames";'))
+      
+      
+    }
+    
+    if (update_metadata) {
+      ## Add column metadata --------------------------------------------------------
+      metadata_column0 <- metadata_column[which(metadata_column$metadata_colname %in% names(a)),]
+      if (nrow(metadata_column0)>0) {
+        for (i in 1:nrow(metadata_column0)) {
+          
+          desc <- gsub(pattern = "<sup>2</sup>",
+                       replacement = "2",
+                       x = metadata_column0$metadata_colname_long[i], fixed = TRUE)
+          short_colname <- gsub(pattern = "<sup>2</sup>", replacement = "2",
+                                x = metadata_column0$metadata_colname[i], fixed = TRUE)
+          
+          RODBC::sqlQuery(channel = channel,
+                          query = paste0('comment on column ',schema,'.',file_name,'.',
+                                         short_colname,' is \'',
+                                         desc, ". ", # remove markdown/html code
+                                         gsub(pattern = "'", replacement ='\"',
+                                              x = metadata_column0$metadata_colname_desc[i]),'\';'))
+          
+        }
+      }
+      ## Add table metadata ---------------------------------------------------------
+      RODBC::sqlQuery(channel = channel,
+                      query = paste0('comment on table ',schema,'.', file_name,
+                                     ' is \'',
+                                     metadata_table,'\';'))
+    }
+    ## grant access to all schemes ------------------------------------------------
+    all_schemas <- RODBC::sqlQuery(channel = channel,
+                                   query = paste0('SELECT * FROM all_users;'))
+    
+    for (iii in 1:length(sort(all_schemas$USERNAME))) {
+      
+      RODBC::sqlQuery(channel = channel,
+                      query = paste0('grant select on ',schema,'.',file_name,
+                                     ' to ', all_schemas$USERNAME[iii],';'))
+    }
+}
+
+
 
 #' Upload new tables to oracle
 #'
-#' @param file_paths 
+#' @param file_paths A data frame where each row is 
 #' @param metadata_column A data.frame of all possible column metadata your tables will need affixed. 
 #' @param channel Establish your oracle connection using a function like oracle_connect. 
 #' @param schema Character. The name of the schema these tables should be saved to. 
@@ -127,7 +284,7 @@ oracle_dl <- function(
 #' #     update_table = TRUE, 
 #' #     update_metadata = TRUE,
 #' #     share_with_all_users = TRUE)
-oracle_upload <- function(
+oracle_upload0 <- function(
     file_paths, 
     metadata_column = data.frame(
       metadata_colname = "DUMMY", 

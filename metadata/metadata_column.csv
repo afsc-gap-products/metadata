@@ -1,74 +1,127 @@
-metadata_colname_base,details,suggested_name_change,data_level,metadata_colname,metadata_colname_long,metadata_units,metadata_datatype,metadata_colname_desc
-NA,NA,NA,All Levels,year,Year,numeric,"NUMBER(10,0)",Year the survey was conducted in.
-NA,NA,NA,NA,srvy,Survey,Abbreviated text,VARCHAR2(255 BYTE),"Abbreviated survey names. The column 'srvy' is associated with the 'survey' and 'survey_id' columns. Northern Bering Sea (NBS), Southeastern Bering Sea (EBS), Bering Sea Slope (BSS), Gulf of Alaska (GOA), Aleutian Islands (AI)."
-NA,NA,NA,NA,survey,Survey Name,text,VARCHAR2(255 BYTE),Name and description of survey. The column 'survey' is associated with the 'srvy' and 'survey_id' columns.
-NA,NA,NA,NA,survey_id,Survey ID,ID code,"NUMBER(38,0)","This number uniquely identifies a survey. Name and description of survey. The column 'survey_id' is associated with the 'srvy' and 'survey' columns. For a complete list of surveys, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
-NA,NA,NA,NA,cruise,Cruise ID,ID code,"NUMBER(38,0)","This is a six-digit number identifying the cruise number of the form: YYYY99 (where YYYY = year of the cruise; 99 = 2-digit number and is sequential; 01 denotes the first cruise that vessel made in this year, 02 is the second, etc.)."
-NA,NA,NA,NA,haul,Haul Number,ID code,"NUMBER(38,0)","This number uniquely identifies a sampling event (haul) within a cruise. It is a sequential number, in chronological order of occurrence."
-NA,NA,NA,NA,hauljoin,Haul ID,ID Code,"NUMBER(38,0)","This is a unique numeric identifier assigned to each (vessel, cruise, and haul) combination."
-NA,NA,NA,NA,stratum,Stratum ID,ID Code,VARCHAR2(255 BYTE),RACE database statistical area for analyzing data. Strata were designed using bathymetry and other geographic and habitat-related elements. The strata are unique to each survey series. Stratum of value 0 indicates experimental tows.
-NA,NA,NA,NA,station,Station ID,ID code,VARCHAR2(255 BYTE),Alpha-numeric designation for the station established in the design of a survey.
-NA,NA,NA,NA,vessel_id,Vessel ID,ID Code,"NUMBER(38,0)","ID number of the vessel used to collect data for that haul. The column 'vessel_id' is associated with the 'vessel_name' column. Note that it is possible for a vessel to have a new name but the same vessel id number. For a complete list of vessel ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
-NA,NA,NA,NA,vessel_name,Vessel Name,text,VARCHAR2(255 BYTE),"Name of the vessel used to collect data for that haul. The column 'vessel_name' is associated with the 'vessel_id' column. Note that it is possible for a vessel to have a new name but the same vessel id number. For a complete list of vessel ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
-NA,NA,NA,NA,date_time,Date and Time of Haul,MM/DD/YYYY HH::MM,DATE,The date (MM/DD/YYYY) and time (HH:MM) of the beginning of the haul.
-NA,NA,NA,NA,longitude_dd_start,Start Longitude (decimal degrees),"decimal degrees, 1e-05 resolution","NUMBER(38,6)",Longitude (one hundred thousandth of a decimal degree) of the start of the haul.
-NA,NA,NA,NA,latitude_dd_start,Start Latitude (decimal degrees),"decimal degrees, 1e-05 resolution","NUMBER(38,6)",Latitude (one hundred thousandth of a decimal degree) of the start of the haul.
-NA,NA,NA,NA,longitude_dd_end,End Longitude (decimal degrees),"decimal degrees, 1e-05 resolution","NUMBER(38,6)",Longitude (one hundred thousandth of a decimal degree) of the end of the haul.
-NA,NA,NA,NA,latitude_dd_end,End Latitude (decimal degrees),"decimal degrees, 1e-05 resolution","NUMBER(38,6)",Latitude (one hundred thousandth of a decimal degree) of the end of the haul.
-NA,NA,NA,NA,species_code,Taxon Code,ID code,"NUMBER(38,0)","The species code of the organism associated with the 'common_name' and 'scientific_name' columns. For a complete species list, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
-NA,NA,NA,NA,common_name,Taxon Common Name,text,VARCHAR2(255 BYTE),"The common name of the marine organism associated with the 'scientific_name' and 'species_code' columns. For a complete species list, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
-NA,NA,NA,NA,scientific_name,Taxon Scientific Name,text,VARCHAR2(255 BYTE),"The scientific name of the organism associated with the 'common_name' and 'species_code' columns. For a complete taxon list, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
-NA,NA,NA,NA,taxon_confidence,Taxon Confidence Rating,rating,VARCHAR2(255 BYTE),"Confidence in the ability of the survey team to correctly identify the taxon to the specified level, based solely on identification skill (e.g., not likelihood of a taxon being caught at that station on a location-by-location basis). Quality codes follow: **'High'**: High confidence and consistency. Taxonomy is stable and reliable at this level, and field identification characteristics are well known and reliable. **'Moderate'**: Moderate confidence. Taxonomy may be questionable at this level, or field identification characteristics may be variable and difficult to assess consistently. **'Low'**: Low confidence. Taxonomy is incompletely known, or reliable field identification characteristics are unknown. Documentation: [Species identification confidence in the eastern Bering Sea shelf survey (1982-2008)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2009-04.pdf), [Species identification confidence in the eastern Bering Sea slope survey (1976-2010)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2014-05.pdf), and [Species identification confidence in the Gulf of Alaska and Aleutian Islands surveys (1980-2011)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2014-01.pdf). "
-NA,NA,taxon_confidence_code,NA,taxon_confidence_code,Taxon Confidence Rating,numeric rating,"NUMBER(38,0)","Confidence in the ability of the survey team to correctly identify the taxon to the specified level, based solely on identification skill (e.g., not likelihood of a taxon being caught at that station on a location-by-location basis). Quality codes follow: **'High'**: High confidence and consistency. Taxonomy is stable and reliable at this level, and field identification characteristics are well known and reliable. **'Moderate'**: Moderate confidence. Taxonomy may be questionable at this level, or field identification characteristics may be variable and difficult to assess consistently. **'Low'**: Low confidence. Taxonomy is incompletely known, or reliable field identification characteristics are unknown. Documentation: [Species identification confidence in the eastern Bering Sea shelf survey (1982-2008)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2009-04.pdf), [Species identification confidence in the eastern Bering Sea slope survey (1976-2010)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2014-05.pdf), and [Species identification confidence in the Gulf of Alaska and Aleutian Islands surveys (1980-2011)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2014-01.pdf). "
-NA,NA,NA,NA,cpue_kgha,Weight CPUE (kg/ha),kilograms/hectare,"NUMBER(38,6)",Relative Density. Catch weight (kilograms) divided by area (hectares) swept by the net.
-NA,NA,NA,NA,cpue_kgkm2,Weight CPUE (kg/km<sup>2</sup>),kilograms/kilometers<sup>2</sup>,"NUMBER(38,6)",Relative Density. Catch weight (kilograms) divided by area (squared kilometers) swept by the net.
-NA,NA,NA,NA,cpue_noha,Number CPUE (no./ha),count/hectare,"NUMBER(38,6)",Relative Abundance. Catch number (in number of organisms) per area (hectares) swept by the net.
-NA,NA,NA,NA,cpue_nokm2,Number CPUE (no./km<sup>2</sup>),count/kilometers<sup>2</sup>,"NUMBER(38,6)",Relative Abundance. Catch number (in number of organisms) per area (squared kilometers) swept by the net.
-NA,NA,NA,NA,weight_kg,Taxon Weight (kg),"kilograms, thousandth resolution","NUMBER(38,3)",Weight (thousandths of a kilogram) of individuals in a haul by taxon.
-NA,NA,NA,NA,count,Taxon Count,"count, whole number resolution","NUMBER(38,0)","Total number of individuals caught in haul by taxon, represented in whole numbers."
-NA,NA,NA,Production,bottom_temperature_c,Bottom Temperature (Degrees Celsius),"degrees Celsius, tenths of a degree resolution","NUMBER(38,1)",Bottom temperature (tenths of a degree Celsius); NA indicates removed or missing values.
-NA,NA,NA,NA,surface_temperature_c,Surface Temperature (Degrees Celsius),"degrees Celsius, tenths of a degree resolution","NUMBER(38,1)",Surface temperature (tenths of a degree Celsius); NA indicates removed or missing values.
-NA,NA,NA,NA,bottom_temperature_c,Bottom Temperature (Degrees Celsius),"degrees Celsius, tenths of a degree resolution","NUMBER(38,1)",Bottom temperature (tenths of a degree Celsius); NA indicates removed or missing values.
-NA,NA,NA,NA,depth_m,Depth (m),"meters, tenths of a meter resolution","NUMBER(38,1)",Bottom depth (tenths of a meter).
-NA,NA,NA,NA,distance_fished_km,Distance Fished (km),"kilometers, thousandths of kilometer resolution","NUMBER(38,3)",Distance the net fished (thousandths of kilometers).
-NA,NA,NA,NA,net_width_m,Net Width (m),meters,"NUMBER(38,1)",Measured or estimated distance (meters) between wingtips of the trawl.
-NA,NA,NA,NA,net_height_m,Net Height (m),meters,"NUMBER(38,1)",Measured or estimated distance (meters) between footrope and headrope of the trawl.
-NA,NA,NA,NA,area_swept_ha,Area Swept (ha),hectares,"NUMBER(38,1)","The area the net covered while the net was fishing (hectares), defined as the distance fished times the net width."
-NA,NA,NA,NA,duration_hr,Tow Duration (decimal hr),decimal hours,"NUMBER(38,1)",This is the elapsed time between start and end of a haul (decimal hours).
-NA,NA,NA,NA,performance,Haul Performance Code (rating),rating,"NUMBER(38,0)","This denotes what, if any, issues arose during the haul. For more information, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
-NA,NA,NA,NA,itis,ITIS Taxonomic Serial Number,ID code,"NUMBER(38,0)",Species code as identified in the Integrated Taxonomic Information System (https://itis.gov/). 
-NA,NA,NA,NA,worms,World Register of Marine Species Taxonomic Serial Number,ID code,"NUMBER(38,0)",Species code as identified in the World Register of Marine Species (WoRMS) (https://www.marinespecies.org/). 
-NA,NA,NA,NA,metadata_colname,Column name,text,VARCHAR2(255 BYTE),Name of the column in a table. 
-NA,NA,NA,NA,metadata_colname_long,Column name spelled out,text,VARCHAR2(255 BYTE),Long name for the column. 
-NA,NA,NA,NA,metadata_units,Units,text,VARCHAR2(255 BYTE),Units of the column. 
-NA,NA,NA,NA,metadata_colname_desc,column description,text,VARCHAR2(4000 BYTE),Descritpion of the column. 
-NA,NA,NA,NA,metadata_sentence_type,Sentence type,text,VARCHAR2(255 BYTE),Type of sentence to have in table metadata. 
-NA,NA,NA,NA,metadata_sentence,Sentence,text,VARCHAR2(255 BYTE),Table metadata sentence. 
-NA,NA,NA,NA,dummy,dummy,dummy,VARCHAR2(255 BYTE),dummy
-AGENCY_ABRV,NA,agency_acronym,NA,agency_acronym,Acroynm of listed Agency,text,VARCHAR2(255 BYTE),Abbreviated agencies that are affiliated with the Alaska bottom trawl survey. The column 'agency_acronym' is associated with the 'agency_short' and 'agency_long' columns. 
-AGENCY_SHORT,NA,agency_short,NA,agency_short,Agency's Shorthand Name,text,VARCHAR2(255 BYTE),NA
-AGENCY_LONG,NA,agency_long,NA,agency_long,Agency's Offical Name,text,VARCHAR2(255 BYTE),Full official name of affiliated agencies to the Alaska bottom trawl survey. The column 'agency_long' is associated with the 'agency_acronym' and 'agency_short' columns.
-SPECIES_CODES,NA,species_codes_grouped,NA,species_codes_grouped,NA,ID code,VARCHAR2(255 BYTE),NA
-REGION,NA,region,NA,region,NA,text,VARCHAR2(255 BYTE),NA
-HAUL_TYPE,NA,haul_type_code,NA,haul_type_code,NA,ID code,"NUMBER(38,0)",NA
-START_TIME,NA,start_date,NA,start_date,NA,YYYY-MM-DD,VARCHAR2(255 BYTE),NA
-NET_MEASURED,NA,net_measured,NA,net_measured,NA,NA,VARCHAR2(255 BYTE),NA
-NET_HEIGHT,NA,net_height_m,NA,net_height_m,NA,meters,BINARY_DOUBLE,NA
-GEAR_DEPTH,NA,gear_depth_m,NA,gear_depth_m,NA,meters,"NUMBER(38,0)",NA
-BOTTOM_DEPTH,NA,bottom_depth_m,NA,bottom_depth_m,NA,meters,"NUMBER(38,0)",NA
-BOTTOM_TYPE,NA,bottom_type_code,NA,bottom_type_code,NA,ID code,"NUMBER(38,0)",NA
-SURFACE_TEMPERATURE,NA,surface_temp_c,NA,surface_temp_c,NA,"degrees Celsius, tenths of a degree resolution",BINARY_DOUBLE,NA
-GEAR_TEMPERATURE,NA,gear_temp_c,NA,gear_temp_c,NA,"degrees Celsius, tenths of a degree resolution",BINARY_DOUBLE,NA
-WIRE_LENGTH,NA,wire_length_m,NA,wire_length_m,NA,meters,"NUMBER(38,0)",NA
-GEAR,Code or specific Gear used indicator???,gear_code,NA,gear_code,NA,NA,"NUMBER(38,0)",NA
-ACCESSORIES,NA,accessories_code,NA,accessories_code,NA,ID code,"NUMBER(38,0)",NA
-SUBSAMPLE,NA,subsample_code,NA,subsample_code,NA,ID code,"NUMBER(38,0)",NA
-SEX,NA,sex_code,NA,sex_code,NA,ID code,"NUMBER(38,0)",NA
-FREQUENCY,NA,length_frequency,NA,length_frequency,NA,"count, whole number resolution","NUMBER(38,0)",NA
-LENGTH_TYPE,NA,length_type_code,NA,length_type_code,NA,ID code,"NUMBER(38,0)",NA
-SAMPLE_TYPE,NA,sample_type_code,NA,sample_type_code,NA,ID code,"NUMBER(38,0)",NA
-PROJECT_TITLE,NA,project_title,NA,project_title,Title of Special Project,text,VARCHAR2(255 BYTE),NA
-PRINCIPAL_INVESTIGATOR,NA,principal_investigator,NA,principal_investigator,NA,text,VARCHAR2(255 BYTE),NA
-NICKNAME,NA,project_title_short,NA,project_title_short,NA,text,VARCHAR2(255 BYTE),NA
-GROUP,NA,project_group,NA,project_group,NA,text,VARCHAR2(255 BYTE),NA
-SOLICITATION_DATE,NA,submission_date,NA,submission_date,NA,YYYY-MM-DD,VARCHAR2(255 BYTE),NA
+metadata_colname,metadata_colname_long,metadata_units,metadata_datatype,metadata_colname_desc
+year,Year,year,"NUMBER(10,0)",Year the survey was conducted in.
+srvy,Survey,text abbreviated,VARCHAR2(255 BYTE),"Abbreviated survey names. The column 'srvy' is associated with the 'survey' and 'survey_id' columns. Northern Bering Sea (NBS), Southeastern Bering Sea (EBS), Bering Sea Slope (BSS), Gulf of Alaska (GOA), Aleutian Islands (AI)."
+survey,Survey Name,text,VARCHAR2(255 BYTE),Name and description of survey. The column 'survey' is associated with the 'srvy' and 'survey_id' columns.
+survey_definition_id,Survey ID,ID code,"NUMBER(38,0)","This number uniquely identifies a survey. Name and description of survey. The column 'survey_id' is associated with the 'srvy' and 'survey' columns. For a complete list of surveys, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
+survey_id,Survey ID,ID code,"NUMBER(38,0)","This number uniquely identifies a survey. Name and description of survey. The column 'survey_id' is associated with the 'srvy' and 'survey' columns. For a complete list of surveys, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
+cruise,Cruise ID,ID code,"NUMBER(38,0)","This is a six-digit number identifying the cruise number of the form: YYYY99 (where YYYY = year of the cruise; 99 = 2-digit number and is sequential; 01 denotes the first cruise that vessel made in this year, 02 is the second, etc.)."
+haul,Haul Number,ID code,"NUMBER(38,0)","This number uniquely identifies a sampling event (haul) within a cruise. It is a sequential number, in chronological order of occurrence."
+hauljoin,Haul ID,ID code,"NUMBER(38,0)","This is a unique numeric identifier assigned to each (vessel, cruise, and haul) combination."
+stratum,Stratum ID,ID code,VARCHAR2(255 BYTE),RACE database statistical area for analyzing data. Strata were designed using bathymetry and other geographic and habitat-related elements. The strata are unique to each survey series. Stratum of value 0 indicates experimental tows.
+station,Station ID,ID code,VARCHAR2(255 BYTE),Alpha-numeric designation for the station established in the design of a survey.
+vessel_id,Vessel ID,ID code,"NUMBER(38,0)","ID number of the vessel used to collect data for that haul. The column 'vessel_id' is associated with the 'vessel_name' column. Note that it is possible for a vessel to have a new name but the same vessel id number. For a complete list of vessel ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
+vessel_name,Vessel Name,text,VARCHAR2(255 BYTE),"Name of the vessel used to collect data for that haul. The column 'vessel_name' is associated with the 'vessel_id' column. Note that it is possible for a vessel to have a new name but the same vessel id number. For a complete list of vessel ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
+date_time,Date and Time of Haul,MM/DD/YYYY HH::MM,DATE,The date (MM/DD/YYYY) and time (HH:MM) of the beginning of the haul.
+longitude_dd_start,Start Longitude (decimal degrees),decimal degrees,"NUMBER(38,6)",Longitude (one hundred thousandth of a decimal degree) of the start of the haul.
+latitude_dd_start,Start Latitude (decimal degrees),decimal degrees,"NUMBER(38,6)",Latitude (one hundred thousandth of a decimal degree) of the start of the haul.
+longitude_dd_end,End Longitude (decimal degrees),decimal degrees,"NUMBER(38,6)",Longitude (one hundred thousandth of a decimal degree) of the end of the haul.
+latitude_dd_end,End Latitude (decimal degrees),decimal degrees,"NUMBER(38,6)",Latitude (one hundred thousandth of a decimal degree) of the end of the haul.
+species_code,Taxon Code,ID code,"NUMBER(38,0)","The species code of the organism associated with the 'common_name' and 'scientific_name' columns. For a complete species list, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
+common_name,Taxon Common Name,text,VARCHAR2(255 BYTE),"The common name of the marine organism associated with the 'scientific_name' and 'species_code' columns. For a complete species list, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
+scientific_name,Taxon Scientific Name,text,VARCHAR2(255 BYTE),"The scientific name of the organism associated with the 'common_name' and 'species_code' columns. For a complete taxon list, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
+taxon_confidence,Taxon Confidence Rating,category,VARCHAR2(255 BYTE),"Confidence in the ability of the survey team to correctly identify the taxon to the specified level, based solely on identification skill (e.g., not likelihood of a taxon being caught at that station on a location-by-location basis). Quality codes follow: **'High'**: High confidence and consistency. Taxonomy is stable and reliable at this level, and field identification characteristics are well known and reliable. **'Moderate'**: Moderate confidence. Taxonomy may be questionable at this level, or field identification characteristics may be variable and difficult to assess consistently. **'Low'**: Low confidence. Taxonomy is incompletely known, or reliable field identification characteristics are unknown. Documentation: [Species identification confidence in the eastern Bering Sea shelf survey (1982-2008)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2009-04.pdf), [Species identification confidence in the eastern Bering Sea slope survey (1976-2010)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2014-05.pdf), and [Species identification confidence in the Gulf of Alaska and Aleutian Islands surveys (1980-2011)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2014-01.pdf). "
+taxon_confidence_code,Taxon Confidence Rating,category,"NUMBER(38,0)","Confidence in the ability of the survey team to correctly identify the taxon to the specified level, based solely on identification skill (e.g., not likelihood of a taxon being caught at that station on a location-by-location basis). Quality codes follow: **'High'**: High confidence and consistency. Taxonomy is stable and reliable at this level, and field identification characteristics are well known and reliable. **'Moderate'**: Moderate confidence. Taxonomy may be questionable at this level, or field identification characteristics may be variable and difficult to assess consistently. **'Low'**: Low confidence. Taxonomy is incompletely known, or reliable field identification characteristics are unknown. Documentation: [Species identification confidence in the eastern Bering Sea shelf survey (1982-2008)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2009-04.pdf), [Species identification confidence in the eastern Bering Sea slope survey (1976-2010)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2014-05.pdf), and [Species identification confidence in the Gulf of Alaska and Aleutian Islands surveys (1980-2011)](http://apps-afsc.fisheries.noaa.gov/Publications/ProcRpt/PR2014-01.pdf). "
+cpue_kgha,Weight CPUE (kg/ha),kilograms per hectare,"NUMBER(38,6)",Catch weight (kilograms) divided by area (hectares) swept by the net.
+cpue_kgkm2,Weight CPUE (kg/km<sup>2</sup>),kilograms per kilometers squared,"NUMBER(38,6)",Catch weight (kilograms) divided by area (squared kilometers) swept by the net.
+cpue_noha,Number CPUE (no/ha),count per hectare,"NUMBER(38,6)",Catch number (in number of organisms) per area (hectares) swept by the net.
+cpue_nokm2,Number CPUE (no/km<sup>2</sup>),count per kilometers squared,"NUMBER(38,6)",Catch number (in number of organisms) per area (squared kilometers) swept by the net.
+weight_kg,Taxon Weight (kg),kilograms,"NUMBER(38,3)",Weight (thousandths of a kilogram) of individuals in a haul by taxon.
+count,Taxon Count,"count, whole number resolution","NUMBER(38,0)","Total number of individuals caught in haul by taxon, represented in whole numbers."
+bottom_temperature_c,Bottom Temperature (Degrees Celsius),degrees Celsius,"NUMBER(38,1)",Bottom temperature (tenths of a degree Celsius); NA indicates removed or missing values.
+surface_temperature_c,Surface Temperature (Degrees Celsius),degrees Celsius,"NUMBER(38,1)",Surface temperature (tenths of a degree Celsius); NA indicates removed or missing values.
+bottom_temperature_c,Bottom Temperature (Degrees Celsius),degrees Celsius,"NUMBER(38,1)",Bottom temperature (tenths of a degree Celsius); NA indicates removed or missing values.
+depth_m,Depth (m),degrees Celsius,"NUMBER(38,1)",Bottom depth (tenths of a meter).
+distance_fished_km,Distance Fished (km),degrees Celsius,"NUMBER(38,3)",Distance the net fished (thousandths of kilometers).
+net_width_m,Net Width (m),meters,"NUMBER(38,1)",Measured or estimated distance (meters) between wingtips of the trawl.
+net_height_m,Net Height (m),meters,"NUMBER(38,1)",Measured or estimated distance (meters) between footrope and headrope of the trawl.
+area_swept_ha,Area Swept (ha),hectares,"NUMBER(38,1)","The area the net covered while the net was fishing (hectares), defined as the distance fished times the net width."
+area_swept_km2,Area Swept (km),kilometers,"NUMBER(38,1)","The area the net covered while the net was fishing (hectares), defined as the distance fished times the net width."
+duration_hr,Tow Duration (decimal hr),"hours, tenths resolution","NUMBER(38,1)",This is the elapsed time between start and end of a haul (decimal hours).
+performance,Haul Performance Code,category,"NUMBER(38,0)","This denotes what, if any, issues arose during the haul. For more information, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
+itis,ITIS Taxonomic Serial Number,ID code,"NUMBER(38,0)",Species code as identified in the Integrated Taxonomic Information System (https://itis.gov/). 
+worms,World Register of Marine Species Taxonomic Serial Number,ID code,"NUMBER(38,0)",Species code as identified in the World Register of Marine Species (WoRMS) (https://www.marinespecies.org/). 
+METADATA_SENTENCE_NAME,Metadata sentence name,text,VARCHAR2(255 BYTE),Name of table metadata sentence. 
+metadata_colname,Column name,text,VARCHAR2(255 BYTE),Name of the column in a table. 
+metadata_colname_long,Column name spelled out,text,VARCHAR2(255 BYTE),Long name for the column. 
+metadata_units,Units,category,VARCHAR2(255 BYTE),Units of the column. 
+metadata_colname_desc,column description,text,VARCHAR2(4000 BYTE),Descritpion of the column. 
+metadata_sentence_type,Sentence type,text,VARCHAR2(255 BYTE),Type of sentence to have in table metadata. 
+metadata_sentence,Sentence,text,VARCHAR2(255 BYTE),Table metadata sentence. 
+dummy,dummy,dummy,VARCHAR2(255 BYTE),dummy
+DESIGN_YEAR,Design year,year,"NUMBER(10,0)","The year the survey area stratum (e.g., statistical stratum, summary area, region) was implimented in."
+AREA_ID,Area ID code,ID code,"NUMBER(38,0)","Area ID code for each statistical area used to produce production estimates (e.g., biomass, population, age comps, length comps). Each area code is unique to the survey. "
+AREA_TYPE,Area ID Type Description,category,VARCHAR2(255 BYTE),"The type of stratum that AREA_ID represents. Types include: STRATUM, REGION, DEPTH, SUBAREA, INPFC BY DEPTH, INPFC, SUBAREA BY DEPTH, REGULATORY AREA, NMFS STATISTICAL AREA. "
+AREA_NAME,Area ID Name,text,VARCHAR2(4000 BYTE),"Descriptive name of each AREA_ID. These names often identify the region, depth ranges, or other regional information for the area ID. "
+DESCRIPTION,Description,text,VARCHAR2(4000 BYTE),Description of row observation. 
+COMMENTS,Comments,text,VARCHAR2(4000 BYTE),Comments regarding row observation. 
+AREA_KM2,Area (km<sup>2</sup>),kilometers squared,"NUMBER(38,3)",Area in thousands of square kilometers. 
+DEPTH_MIN_M,Area ID Minimum Depth (m),meters,"NUMBER(38,3)",Minimum depth (meters) of the area covered by AREA_ID. 
+DEPTH_MAX_M,Area ID Maximum Depth (m),meters,"NUMBER(38,3)",Maximum depth (meters) of the area covered by AREA_ID. 
+crs,Coordinate Reference System,ID code,VARCHAR2(5 BYTE),"Coordinate reference system that areas (like AREA_KM2) are calculated in, as defined by https://spatialreference.org/ (e.g., ""+proj=longlat"", ""EPSG:3338""). "
+vessel_id,Vessel ID,ID code,"NUMBER(38,0)","ID number of the vessel used to collect data for that haul. The column 'vessel_id' is associated with the 'vessel_name' column. Note that it is possible for a vessel to have a new name but the same vessel id number. For a complete list of vessel ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
+COUNTRY_ID,Vessel Name,text,VARCHAR2(255 BYTE),"Name of the vessel used to collect data for that haul. The column 'vessel_name' is associated with the 'vessel_id' column. Note that it is possible for a vessel to have a new name but the same vessel id number. For a complete list of vessel ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual). "
+vessel_OWNER,Vessel Owner,text,VARCHAR2(255 BYTE),Name of vessel owner or company. 
+vessel_LENGTH,Vessel Length,meters,"NUMBER(38,0)",The length of vessel in meters. 
+vessel_COAST_GUARD_NUMBER,Vessel Coast Guard Number,ID code,"NUMBER(38,0)",Official Identification number as defined by www.dco.uscg.mil. The Official Number (O/N) is the 6 or 7 digit number awarded to the vessel at the time it is first documented with the US Coast Guard. This number remains with the vessel indefinitely and should be marked in accordance with 46 CFR 67.121.
+vessel_TONNAGE,Vessel Tonnage,metric tons,"NUMBER(38,0)",The tonnage of vessel in metric tons. 
+vessel_imo,Vessel International Maritime Organization Number,ID code,"NUMBER(38,0)","The International Maritime Organization (IMO) number consists of the letters ""IMO"" followed by a unique, seven-digit number: the pattern is ""NNNNNNN"", where N is a single-digit number, e.g., ""1234567"""
+vessel_mmsi,Vessel Maritime Mobile Service Identities,ID code,"NUMBER(38,0)","Maritime Mobile Service Identities (MMSIs) are nine-digit numbers used by maritime digital selective calling (DSC), automatic identification systems (AIS) and certain other equipment to uniquely identify a ship or a coast radio station."
+vessel_callsign,Vessel Call Sign,ID code,"NUMBER(38,0)","A call sign is a designated sequence of letters and numbers that are assigned when a vessel, whether it be a sailing yacht, motor yacht, rib or commercial vessel, receives it's Ship Radio Licence. The vessel also receives it's MMSI number, so that each vessel is uniquely identified."
+ACTIVE,Vessel Active/Inactive,logical,NA,"Logical, describing if a vessel is active (TRUE) or not (FALSE). "
+agency_acronym,Acroynm of listed Agency,text abbreviated,VARCHAR2(255 BYTE),Abbreviated agencies that are affiliated with the Alaska bottom trawl survey. The column 'agency_acronym' is associated with the 'agency_short' and 'agency_long' columns. 
+agency_short,Agency's Shorthand Name,text,VARCHAR2(255 BYTE),A sort version of the full official name of affiliated agencies to the Alaska bottom trawl survey. The column 'agency_short' is associated with the 'agency_acronym' and 'agency_long' columns.
+agency_long,Agency's Offical Name,text,VARCHAR2(255 BYTE),Full official name of affiliated agencies to the Alaska bottom trawl survey. The column 'agency_long' is associated with the 'agency_acronym' and 'agency_short' columns.
+AGENCY_JOIN,Agency's ID code,ID code,"NUMBER(38,0)",Affiliated agency ID code.
+population_count,Estimated Population,numeric,BINARY_DOUBLE,"The estimated population caught in the survey for a species, group, or total for a given survey. "
+population_CI_LOWER,Estimated Population Lower Confidence Interval,numeric,BINARY_DOUBLE,"The estimated population lower confidence interval caught in the survey for a species, group, or total for a given survey. "
+population_CI_UPPER,Estimated Population Upper Confidence Interval,numeric,BINARY_DOUBLE,"The estimated population upper confidence interval caught in the survey for a species, group, or total for a given survey. "
+population_DF,Estimated Population Degrees of Freedom,numeric,"NUMBER(38,0)","The estimated population degrees of freedom caught in the survey for a species, group, or total for a given survey. "
+population_VAR,Estimated Population Variance,numeric,BINARY_DOUBLE,"The estimated population variance caught in the survey for a species, group, or total for a given survey. "
+BIOMASS_CI_LOWER,Estimated Biomass Lower Confidence Interval,numeric,BINARY_DOUBLE,"The estimated biomass lower confidence interval caught in the survey for a species, group, or total for a given survey. "
+BIOMASS_CI_UPPER,Estimated Biomass Upper Confidence Interval,numeric,BINARY_DOUBLE,"The estimated biomass upper confidence interval caught in the survey for a species, group, or total for a given survey. "
+BIOMASS_DF,Estimated Biomass Degrees of Freedom,numeric,"NUMBER(38,0)","The estimated biomass degrees of freedom caught in the survey for a species, group, or total for a given survey. "
+BIOMASS_MT,Estimated Biomass,numeric,BINARY_DOUBLE,"The estimated biomass caught in the survey for a species, group, or total for a given survey. "
+BIOMASS_VAR,Estimated Biomass Variance,numeric,BINARY_DOUBLE,"The estimated biomass variance caught in the survey for a species, group, or total for a given survey."
+COUNT_CATCH,Number of organisms caught. ,numeric,"NUMBER(38,0)","The number of organisms caught, used in the calculation of production biomass and population estimates. "
+COUNT_HAUL,Number of hauls. ,numeric,"NUMBER(38,0)",The number of hauls used in the calculation of production biomass and population estimates. 
+COUNT_LENGTH,Number of organisms lengthed. ,numeric,"NUMBER(38,0)","The number of organisms lengthed, used in the calculation of production biomass and population estimates. "
+CPUE_KGKM2_MEAN,Mean Weight CPUE,kilograms per kilometers squared,BINARY_DOUBLE,The mean of catch weight (kilograms) divided by area (squared kilometers) swept by the net used in design-based indicie calculation.
+CPUE_KGKM2_VAR,Variance of the Mean Weight CPUE,kilograms per kilometers squared,BINARY_DOUBLE,The variance of mean of catch weight (kilograms) divided by area (squared kilometers) swept by the net used in design-based indicie calculation.
+CPUE_NOKM2_MEAN,Mean Numberic CPUE,count per kilometers squared,BINARY_DOUBLE,The mean of catch count (number) divided by area (squared kilometers) swept by the net used in design-based indicie calculation.
+CPUE_NOKM2_VAR,Variance of the Mean Numeric CPUE,count per kilometers squared,BINARY_DOUBLE,The variance of mMean of catch count (number) divided by area (squared kilometers) swept by the net used in design-based indicie calculation.
+LENGTH_MEAN,Mean length observed in age comp estimate,numeric,"NUMBER(38,3)",Mean length observed in age comp estimate. 
+LENGTH_SD,Variance of mean length observed in age comp estimate,numeric,"NUMBER(38,3)",Variance of mean length observed in age comp estimate. 
+CRUISEJOIN,Cruise ID,ID code,"NUMBER(38,0)","This is a unique numeric identifier assigned to each survey, vessel, and year combination."
+haul_type,Haul Sampling Type,ID code,"NUMBER(38,0)","Type of haul sampling method. For a complete list of haul type ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
+net_measured,Net measured during haul,logical,NA,"Logical, describing if the net was measured (TRUE) or not (FALSE) by wheelhouse and marport programs during the haul. "
+gear_depth_m,Gear depth,meters,"NUMBER(38,1)",Depth gear was deployed at (tenths of a meter). Gear depth plus net height equals bottom depth. 
+bottom_type_code,Seafloor bottom type code,ID code,"NUMBER(38,0)","Bottom type on sea floor at haul location. For a complete list of bottom type ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
+wire_length_m,Trawl wire length,meters,"NUMBER(38,0)",Length of wire deployed during a given haul in meters. 
+gear_id,Gear ID code,ID code,"NUMBER(38,0)","Type of trawl or gear deployed. For a complete list of vessel gear type ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
+ABUNDANCE_HAUL,Design-based index approved haul,logical,NA,"Logical, describing if this haul was conducted in a standard manner and thus used for design-based index estimates (TRUE) or not (FALSE). "
+sex_code,Sex of a specimen,ID code,"NUMBER(38,0)","Sex of a specimen where ""M"" = ""Male"", ""F"" = ""Female"", ""U"" = Unsexed. "
+length_mm,Length of a specimen,millimeters,BINARY_DOUBLE,Length of s specimen in millimeters. 
+project_title,Title of Special Project,text,VARCHAR2(255 BYTE),Special project title. 
+principal_investigator,Principle Investigator,text,VARCHAR2(255 BYTE),First and last name of principle investigator for a project. 
+project_title_short,Short Title of Special Project,text,VARCHAR2(255 BYTE),Special project short title (short version of PROJECT_TITLE). 
+submission_date,Date,YYYY-MM-DD,TIMESTAMP,Date special projects were due to be submitted for the upcoming survey season. 
+tawlable,Trawlable stations,logical,NA,"Logical, describing if stations are trawlable (TRUE) or not (FALSE). "
+REASON,Naming status for species,text,VARCHAR2(5 BYTE),"Description of species' naming status (e.g., ""synonym"", ""preoccupied"",""misspelling"" )"
+species_name_survey,Scientific name used in survey data,text,VARCHAR2(5 BYTE),Scientific name of species historically or currently used in the survey. 
+species_name_accepted,Scientific name used in taxonomic database,text,VARCHAR2(5 BYTE),"Scientific name of species used in taxonomic ""DATABASE"" column. "
+ID_RANK,Lowest taxonomic rank,ID code,VARCHAR2(255 BYTE),Lowest taxonomic rank of a given species entry. 
+DATABASE,Taxonomic database source,category,VARCHAR2(255 BYTE),"Taxonomic database source (e.g., ""ITIS"", ""WORMS""). "
+DATABASE_ID,Taxonomic database source species ID code,ID code,"NUMBER(38,0)","Species ID code of a species in the taxonomic ""DATABASE"" source. "
+GENUS,genus phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of genus of a given species. 
+SUBFAMILY,subfamily phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of subfamily of a given species. 
+FAMILY,family phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of family of a given species. 
+SUPERFAMILY,superfamily phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of superfamily of a given species. 
+SUBORDER,suborder phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of suborder of a given species. 
+ORDER,order phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of order of a given species. 
+SUPERORDER,superorder phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of superorder of a given species. 
+SUBCLASS,subclass phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of subclass of a given species. 
+CLASS,class phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of class of a given species. 
+SUPERCLASS,superclass phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of superclass of a given species. 
+SUBPHYLUM,subphylum phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of subphylum of a given species. 
+PHYLUM,phylum phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of phylum of a given species. 
+KINGDOM,kingdom phylogenetic rank,category,VARCHAR2(255 BYTE),Pylogenetic latin rank of kingdom of a given species. 
