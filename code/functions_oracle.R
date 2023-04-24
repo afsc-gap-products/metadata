@@ -11,7 +11,7 @@
 oracle_connect <- function(
     schema='AFSC', 
     username = NULL, 
-    passowrd = NULL){(echo=FALSE)
+    password = NULL){(echo=FALSE)
   
   library("RODBC")
   library("getPass")

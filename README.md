@@ -85,7 +85,7 @@ NMFS-F/SPO-452; p. 227). U.S. Dep. Commer.
 
 Resource Assessment, A. F. S. C. (U.S.)., and Division, C. E. (2021).
 *Groundfish survey data codes and forms*.
-<https://repository.library.noaa.gov/view/noaa/31570>
+https://doi.org/<https://doi.org/10.25923/kp5e-1g02>
 
 </div>
 
@@ -94,7 +94,8 @@ Resource Assessment, A. F. S. C. (U.S.)., and Division, C. E. (2021).
 Von Szalay, P. G., and Raring, N. W. (2018). *Data report: 2017 <span
 class="nocase">Gulf of Alaska</span> bottom trawl survey* (NOAA Tech.
 Memo. NMFS-AFSC-374). U.S. Dep. Commer.
-<https://apps-afsc.fisheries.noaa.gov/Publications/AFSC-TM/NOAA-TM-AFSC-374.pdf>
+https://doi.org/[http://doi.org/10.7289/V5/TM-AFSC-374
+](http://doi.org/10.7289/V5/TM-AFSC-374 )
 
 </div>
 
@@ -102,7 +103,7 @@ Memo. NMFS-AFSC-374). U.S. Dep. Commer.
 
 Von Szalay, P. G., and Raring, N. W. (2020). *Data report: 2018 Aleutian
 Islands bottom trawl survey* (NOAA Tech. Memo. NMFS-AFSC-409). U.S. Dep.
-Commer. <https://repository.library.noaa.gov/view/noaa/26367>
+Commer. https://doi.org/<https://doi.org/10.25923/qe5v-fz70>
 
 </div>
 
@@ -287,29 +288,31 @@ sessionInfo()
     ## Matrix products: default
     ## 
     ## locale:
-    ## [1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8    LC_MONETARY=English_United States.utf8
-    ## [4] LC_NUMERIC=C                           LC_TIME=English_United States.utf8    
+    ## [1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8   
+    ## [3] LC_MONETARY=English_United States.utf8 LC_NUMERIC=C                          
+    ## [5] LC_TIME=English_United States.utf8    
     ## 
     ## attached base packages:
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] knitr_1.42        badger_0.2.3      janitor_2.2.0     googledrive_2.1.0 magrittr_2.0.3    xlsx_0.6.5       
+    ## [1] knitr_1.42        badger_0.2.3      janitor_2.2.0     xlsx_0.6.5        googledrive_2.1.0
+    ## [6] magrittr_2.0.3   
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] tidyselect_1.2.0    xfun_0.38           purrr_1.0.1         rJava_1.0-6         gargle_1.3.0       
     ##  [6] snakecase_0.11.0    colorspace_2.1-0    vctrs_0.6.1         generics_0.1.3      htmltools_0.5.5    
-    ## [11] yaml_2.3.7          readtext_0.81       utf8_1.2.3          rlang_1.1.0         pillar_1.9.0       
+    ## [11] yaml_2.3.7          utf8_1.2.3          rlang_1.1.0         readtext_0.81       pillar_1.9.0       
     ## [16] glue_1.6.2          withr_2.5.0         rappdirs_0.3.3      bit64_4.0.5         RColorBrewer_1.1-3 
     ## [21] rvcheck_0.2.1       lifecycle_1.0.3     stringr_1.5.0       dlstats_0.1.6       munsell_0.5.0      
     ## [26] gtable_0.3.3        evaluate_0.20       tzdb_0.3.0          fastmap_1.1.1       curl_5.0.0         
     ## [31] parallel_4.2.3      fansi_1.0.4         xlsxjars_0.6.1      readr_2.1.4         BiocManager_1.30.20
-    ## [36] openssl_2.0.6       scales_1.2.1        vroom_1.6.1         jsonlite_1.8.4      fs_1.6.1           
-    ## [41] bit_4.0.5           ggplot2_3.4.1       askpass_1.1         hms_1.1.3           digest_0.6.31      
+    ## [36] scales_1.2.1        openssl_2.0.6       vroom_1.6.1         jsonlite_1.8.4      fs_1.6.1           
+    ## [41] bit_4.0.5           ggplot2_3.4.1       hms_1.1.3           askpass_1.1         digest_0.6.31      
     ## [46] stringi_1.7.12      dplyr_1.1.1         grid_4.2.3          yulab.utils_0.0.6   cli_3.6.1          
-    ## [51] tools_4.2.3         tibble_3.2.1        crayon_1.5.2        pkgconfig_2.0.3     data.table_1.14.8  
-    ## [56] timechange_0.2.0    lubridate_1.9.2     rmarkdown_2.20      httr_1.4.5          rstudioapi_0.14    
-    ## [61] R6_2.5.1            compiler_4.2.3
+    ## [51] tools_4.2.3         tibble_3.2.1        crayon_1.5.2        pkgconfig_2.0.3     RODBC_1.3-20       
+    ## [56] data.table_1.14.8   timechange_0.2.0    lubridate_1.9.2     rmarkdown_2.20      httr_1.4.5         
+    ## [61] rstudioapi_0.14     R6_2.5.1            compiler_4.2.3
 
 ## NOAA README
 
