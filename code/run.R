@@ -17,7 +17,7 @@ link_repo <- "https://github.com/afsc-gap-products/metadata/"
 
 library(magrittr)
 library(googledrive)
-library(xlsx)
+library(readxl) # library(xlsx)
 library(janitor)
 
 # Support scripts --------------------------------------------------------------
@@ -26,7 +26,7 @@ source('./code/functions_oracle.R')
 
 # sign into google drive -------------------------------------------------------
 
-googledrive::drive_deauth()
+# googledrive::drive_deauth()
 googledrive::drive_auth()
 1
 

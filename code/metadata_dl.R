@@ -38,9 +38,13 @@ googledrive::drive_download(
 # Clean metadata ----------------------------------------------------------------
 
 ## Table -----------------------------------------------------------------------
-metadata_table <- xlsx::read.xlsx(
-  file = paste0(dir_out, "/future_oracle.xlsx"), 
-  sheetName = "METADATA_TABLE") %>% 
+
+metadata_table <- readxl::read_xlsx(
+  path = paste0(dir_out, "/future_oracle.xlsx"),
+  sheet = "METADATA_TABLE") %>%
+# metadata_table <- xlsx::read.xlsx(
+  # path = paste0(dir_out, "/future_oracle.xlsx"), 
+  # sheet = "METADATA_TABLE") %>% 
   janitor::clean_names() %>% 
   dplyr::select(-dplyr::starts_with("x"), -dplyr::starts_with("na")) %>% 
   dplyr::filter(!is.na(metadata_sentence_name)) %>% 
@@ -61,10 +65,14 @@ readr::write_lines(x = paste0("These column provide the column metadata for all 
 
 
 ## Column ----------------------------------------------------------------------
-metadata_column <- xlsx::read.xlsx(
-  file = paste0(dir_out, "future_oracle.xlsx"), 
-  sheetName = "METADATA_COLUMN", 
-  startRow = 2) %>% 
+metadata_column <- readxl::read_xlsx(
+  path = paste0(dir_out, "/future_oracle.xlsx"),
+  sheet = "METADATA_COLUMN", 
+  skip = 1) %>%
+# metadata_column <- xlsx::read.xlsx(
+#   file = paste0(dir_out, "future_oracle.xlsx"), 
+#   sheetName = "METADATA_COLUMN", 
+#   startRow = 2) %>% 
   janitor::clean_names() %>% 
   dplyr::select(dplyr::starts_with("metadata_")) %>% 
   dplyr::filter(!is.na(metadata_colname)) %>% 
