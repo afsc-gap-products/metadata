@@ -68,6 +68,8 @@ metadata_column <- xlsx::read.xlsx(
   janitor::clean_names() %>% 
   dplyr::select(dplyr::starts_with("metadata_")) %>% 
   dplyr::filter(!is.na(metadata_colname)) %>% 
+  dplyr::filter(!is.null(metadata_colname)) %>% 
+  dplyr::filter(!(metadata_colname %in% c("", "NA"))) %>% 
   dplyr::mutate(
     metadata_colname_desc = gsub(pattern = "INSERT_CODE_BOOK", replacement = INSERT_CODE_BOOK, x = metadata_colname_desc), 
     # metadata_colname_desc = gsub(pattern = "link_code_books", replacement = link_code_books, x = metadata_colname_desc), 
