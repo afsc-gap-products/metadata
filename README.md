@@ -314,25 +314,21 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] knitr_1.42        badger_0.2.3      janitor_2.2.0     xlsx_0.6.5        googledrive_2.1.0
-    ## [6] magrittr_2.0.3   
+    ## [1] knitr_1.42        badger_0.2.3      janitor_2.2.0     xlsx_0.6.5        googledrive_2.1.0 magrittr_2.0.3   
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] tidyselect_1.2.0    xfun_0.38           purrr_1.0.1         rJava_1.0-6        
-    ##  [5] gargle_1.3.0        snakecase_0.11.0    colorspace_2.1-0    vctrs_0.6.1        
-    ##  [9] generics_0.1.3      htmltools_0.5.5     yaml_2.3.7          utf8_1.2.3         
-    ## [13] rlang_1.1.0         readtext_0.81       pillar_1.9.0        glue_1.6.2         
-    ## [17] withr_2.5.0         rappdirs_0.3.3      bit64_4.0.5         RColorBrewer_1.1-3 
-    ## [21] rvcheck_0.2.1       lifecycle_1.0.3     stringr_1.5.0       dlstats_0.1.6      
-    ## [25] munsell_0.5.0       gtable_0.3.3        evaluate_0.20       tzdb_0.3.0         
-    ## [29] fastmap_1.1.1       curl_5.0.0          parallel_4.2.3      fansi_1.0.4        
-    ## [33] xlsxjars_0.6.1      readr_2.1.4         BiocManager_1.30.20 scales_1.2.1       
-    ## [37] openssl_2.0.6       vroom_1.6.1         jsonlite_1.8.4      fs_1.6.1           
-    ## [41] bit_4.0.5           ggplot2_3.4.1       hms_1.1.3           askpass_1.1        
-    ## [45] digest_0.6.31       stringi_1.7.12      dplyr_1.1.1         grid_4.2.3         
-    ## [49] yulab.utils_0.0.6   cli_3.6.1           tools_4.2.3         tibble_3.2.1       
-    ## [53] crayon_1.5.2        pkgconfig_2.0.3     RODBC_1.3-20        data.table_1.14.8  
-    ## [57] timechange_0.2.0    lubridate_1.9.2     rmarkdown_2.20      httr_1.4.5         
+    ##  [1] tidyselect_1.2.0    xfun_0.38           purrr_1.0.1         rJava_1.0-6         gargle_1.3.0       
+    ##  [6] snakecase_0.11.0    colorspace_2.1-0    vctrs_0.6.1         generics_0.1.3      htmltools_0.5.5    
+    ## [11] yaml_2.3.7          utf8_1.2.3          rlang_1.1.0         readtext_0.81       pillar_1.9.0       
+    ## [16] glue_1.6.2          withr_2.5.0         rappdirs_0.3.3      bit64_4.0.5         RColorBrewer_1.1-3 
+    ## [21] rvcheck_0.2.1       lifecycle_1.0.3     stringr_1.5.0       dlstats_0.1.6       munsell_0.5.0      
+    ## [26] gtable_0.3.3        evaluate_0.20       tzdb_0.3.0          fastmap_1.1.1       curl_5.0.0         
+    ## [31] parallel_4.2.3      fansi_1.0.4         xlsxjars_0.6.1      readr_2.1.4         BiocManager_1.30.20
+    ## [36] scales_1.2.1        openssl_2.0.6       vroom_1.6.1         jsonlite_1.8.4      fs_1.6.1           
+    ## [41] bit_4.0.5           ggplot2_3.4.1       hms_1.1.3           askpass_1.1         digest_0.6.31      
+    ## [46] stringi_1.7.12      dplyr_1.1.1         grid_4.2.3          yulab.utils_0.0.6   cli_3.6.1          
+    ## [51] tools_4.2.3         tibble_3.2.1        crayon_1.5.2        pkgconfig_2.0.3     RODBC_1.3-20       
+    ## [56] data.table_1.14.8   timechange_0.2.0    lubridate_1.9.2     rmarkdown_2.20      httr_1.4.5         
     ## [61] rstudioapi_0.14     R6_2.5.1            compiler_4.2.3
 
 ## NOAA README
