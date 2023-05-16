@@ -22,10 +22,11 @@ CLASS,Subphylum phylogenetic rank,category,VARCHAR2(255 BYTE),Phylogenetic latin
 CLASSIFICATION,Taxonomic classification rank group,category,VARCHAR2(255 BYTE),"Phylogenetic classification group rank for a given species. "")"
 COMMENTS,Comments,text,VARCHAR2(4000 BYTE),Comments regarding row observation.
 COMMON_NAME,Taxon Common Name,text,VARCHAR2(255 BYTE),"The common name of the marine organism associated with the 'scientific_name' and 'species_code' columns. For a complete species list, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
-COUNT,Taxon Count,"count, whole number resolution","NUMBER(38,0)","Total number of individuals caught in haul by taxon, represented in whole numbers."
-COUNT_CATCH,Number of organisms caught.,numeric,"NUMBER(38,0)",The summary number of hauls where a taxons' weights were collected.
-COUNT_HAUL,Number of hauls.,numeric,"NUMBER(38,0)",The summary number of hauls where a species was caught.
-COUNT_LENGTH,Number of organisms lengthed.,numeric,"NUMBER(38,0)",The summary number of hauls where a taxons' lengths were collected.
+COUNT,Taxon Count,"count, whole number resolution","NUMBER(38,0)","Total number of individuals caught in haul by taxon, represented in whole numbers used in calculation."
+N_WEIGHT,Hauls with catch,numeric,"NUMBER(38,0)",Total number of hauls with positive catch/weighed taxon data used in calculation.
+N_COUNT,Hauls with taxon counts,numeric,"NUMBER(38,0)",Total number of hauls with positive taxon counts used in calculation.
+N_HAUL,Valid hauls,numeric,"NUMBER(38,0)",Total number of valid hauls used in calculation.
+N_LENGTH,Hauls with taxon lengths,numeric,"NUMBER(38,0)",Total number of hauls with taxon length data used in calculation.
 COUNTRY_ID,Vessel Name,text,VARCHAR2(255 BYTE),"Name of the vessel used to collect data for that haul. The column 'vessel_name' is associated with the 'vessel_id' column. Note that it is possible for a vessel to have a new name but the same vessel id number. For a complete list of vessel ID codes, review the [code books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)."
 CPUE_KGHA,Weight CPUE (kg/ha),kilograms per hectare,"NUMBER(38,6)",Catch weight (kilograms) divided by area (hectares) swept by the net.
 CPUE_KGKM2,Weight CPUE (kg/km<sup>2</sup>),kilograms per kilometers squared,"NUMBER(38,6)",Catch weight (kilograms) divided by area (squared kilometers) swept by the net.
@@ -97,7 +98,7 @@ SPECIES_NAME_ACCEPTED,Scientific name used in taxonomic database,text,VARCHAR2(5
 SPECIES_NAME_SURVEY,Scientific name used in survey data,text,VARCHAR2(5 BYTE),Scientific name of species historically or currently used in the survey.
 SRVY,Survey,text abbreviated,VARCHAR2(255 BYTE),"Abbreviated survey names. The column 'srvy' is associated with the 'survey' and 'survey_id' columns. Northern Bering Sea (NBS), Southeastern Bering Sea (EBS), Bering Sea Slope (BSS), Gulf of Alaska (GOA), Aleutian Islands (AI)."
 STATION,Station ID,ID code,VARCHAR2(255 BYTE),Alpha-numeric designation for the station established in the design of a survey.
-STRATUM,Stratum ID,ID code,VARCHAR2(255 BYTE),RACE database statistical area for analyzing data. Strata were designed using bathymetry and other geographic and habitat-related elements. The strata are unique to each survey series. Stratum of value 0 indicates experimental tows.
+STRATUM,Stratum ID,ID code,"NUMBER(10,0)",RACE database statistical area for analyzing data. Strata were designed using bathymetry and other geographic and habitat-related elements. The strata are unique to each survey series. Stratum of value 0 indicates experimental tows.
 SUBCLASS,Superclass phylogenetic rank,category,VARCHAR2(255 BYTE),Phylogenetic latin rank of subclass of a given species.
 SUBFAMILY,Superfamily phylogenetic rank,category,VARCHAR2(255 BYTE),Phylogenetic latin rank of subfamily of a given species.
 SUBMISSION_DATE,Date,YYYY-MM-DD,TIMESTAMP,Date special projects were due to be submitted for the upcoming survey season.

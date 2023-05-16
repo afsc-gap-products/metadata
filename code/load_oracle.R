@@ -4,7 +4,7 @@
 # This has a specific username and password because I DONT want people to have access to this!
 # This has a specific username and password because I DONT want people to have access to this!
 locations <- c("Z:/Projects/ConnectToOracle.R", 
-               "C:/Users/emily.markowitz/Documents/Projects/ConnectToOracle.R")
+               "C:/Users/emily.markowitz/Work/projects/ConnectToOracle.R")
 for (i in 1:length(locations)){
   if (file.exists(locations[i])) {source(locations[i])}
 }

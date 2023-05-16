@@ -28,7 +28,7 @@ source('./code/functions_oracle.R')
 
 # googledrive::drive_deauth()
 googledrive::drive_auth()
-1
+2
 
 source("./code/metadata_dl.R") 
 
@@ -39,7 +39,7 @@ source("./code/metadata_dl.R")
 # Update README and Share table to oracle --------------------------------------
 
 # This is an accepted version of the data: 
-dir_out <- paste0(getwd(), "/metadata/2023-04-27/")
+dir_out <- paste0(getwd(), "/metadata/2023-05-15/")
 
 pretty_date <- format(
   x = as.Date(strsplit(x = dir_out, 
