@@ -2,7 +2,7 @@
 
 # [AFSC RACE Groundfish and Shellfish Survey Metadata](https://github.com/afsc-gap-products/metadata/) <img src="https://avatars.githubusercontent.com/u/91760178?s=96&amp;v=4" alt="Logo." align="right" width="139" height="139"/>
 
-## !!!This code has now moved to the [GAP_PRODUCTS Repository](https://github.com/afsc-gap-products/gap_products)!!!
+## !!!This repository has been **archived** and the code has been moved to the [GAP_PRODUCTS Repository](https://github.com/afsc-gap-products/gap_products)!!!
 
 ## This code is primarily maintained by:
 
