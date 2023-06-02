@@ -41,7 +41,6 @@ CRUISE,Cruise ID,ID code,"NUMBER(38,0)","This is a six-digit number identifying 
 CRUISEJOIN,Cruise ID,ID code,"NUMBER(38,0)","This is a unique numeric identifier assigned to each survey, vessel, and year combination."
 DATABASE,Genus phylogenetic rank,category,VARCHAR2(255 BYTE),"Taxonomic database source (e.g., ""ITIS"", ""WORMS"")."
 DATABASE_ID,Subfamily phylogenetic rank,ID code,VARCHAR2(255 BYTE),"Species ID code of a species in the taxonomic ""DATABASE"" source."
-DATE_TIME,Date and Time of Haul,MM/DD/YYYY HH::MM,DATE,The date (MM/DD/YYYY) and time (HH:MM) of the beginning of the haul.
 DEPTH_M,Depth (m),degrees Celsius,"NUMBER(38,1)",Bottom depth (tenths of a meter).
 DEPTH_MAX_M,Area ID Maximum Depth (m),meters,"NUMBER(38,3)",Maximum depth (meters) of the area covered by AREA_ID.
 DEPTH_MIN_M,Area ID Minimum Depth (m),meters,"NUMBER(38,3)",Minimum depth (meters) of the area covered by AREA_ID.
@@ -127,3 +126,9 @@ WEIGHT_KG,Taxon Weight (kg),kilograms,"NUMBER(38,3)",Weight (thousandths of a ki
 WIRE_LENGTH_M,Trawl wire length,meters,"NUMBER(38,0)",Length of wire deployed during a given haul in meters.
 WORMS,World Register of Marine Species Taxonomic Serial Number,ID code,"NUMBER(38,0)",Species code as identified in the World Register of Marine Species (WoRMS) (https://www.marinespecies.org/).
 YEAR,Year,year,"NUMBER(10,0)",Year the survey was conducted in.
+DATE_TIME_START,Start Date and Time,MM/DD/YYYY HH::MM,DATE,The date (MM/DD/YYYY) and time (HH:MM) of the beginning of the haul.
+DATE_TIME_END,End Date and Time,MM/DD/YYYY HH::MM,DATE,The date (MM/DD/YYYY) and time (HH:MM) of the end of the haul.
+DATE_TIME,Date and Time,MM/DD/YYYY HH::MM,DATE,The date (MM/DD/YYYY) and time (HH:MM) of the haul.
+DATE_START,Start Date,YYYY-MM-DD,DATE,"The date (YYYY-MM-DD) of the beginning of the event (e.g., cruise)."
+DATE_END,End Date,YYYY-MM-DD,DATE,"The date (YYYY-MM-DD) of the end of the event (e.g., cruise)."
+DATE,Date,YYYY-MM-DD,DATE,"The date (YYYY-MM-DD) of the event (e.g., cruise)."

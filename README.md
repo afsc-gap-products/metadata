@@ -2,6 +2,8 @@
 
 # [AFSC RACE Groundfish and Shellfish Survey Metadata](https://github.com/afsc-gap-products/metadata/) <img src="https://avatars.githubusercontent.com/u/91760178?s=96&amp;v=4" alt="Logo." align="right" width="139" height="139"/>
 
+## !!!This code has now moved to the [GAP_PRODUCTS Repository](https://github.com/afsc-gap-products/gap_products)!!!
+
 ## This code is primarily maintained by:
 
 **Emily Markowitz** (Emily.Markowitz AT noaa.gov;
@@ -31,6 +33,7 @@ Seattle, WA 98195
 
 ## Table of contents
 
+> - [*Table of contents*](#table-of-contents)
 > - [*Metadata*](#metadata)
 >   - [*User resources*](#user-resources)
 >   - [*Relevant technical
@@ -45,16 +48,14 @@ Seattle, WA 98195
 
 # Metadata
 
-These metadata were last updated on May 15, 2023.
+These metadata were last updated on June 02, 2023.
 
 ## User resources
 
 - [AFSC’s Resource Assessment and Conservation Engineering
   Division](https://www.fisheries.noaa.gov/about/resource-assessment-and-conservation-engineering-division).
 - For more information about codes used in the tables, please refer to
-  the [survey code
-  books](https://www.fisheries.noaa.gov/resource/document/groundfish-survey-species-code-manual-and-data-codes-manual)
-  (Resource Assessment and Division, 2021).
+  the survey code books.
 - Find [past
   reports](http://apps-afsc.fisheries.noaa.gov/RACE/surveys/cruise_results.htm)
   about these surveys.
@@ -76,16 +77,8 @@ Markowitz, E. H., Dawson, E. J., Charriere, N. E., Prohaska, B. K.,
 Rohan, S. K., Stevenson, D. E., and Britt, L. L. (2022). *Results of the
 2021 eastern and northern Bering Sea continental shelf bottom trawl
 survey of groundfish and invertebrate fauna* (NOAA Tech. Memo.
-NMFS-F/SPO-452; p. 227). U.S. Dep. Commer.
+NMFS-AFSC-452; p. 227). U.S. Dep. Commer.
 <https://doi.org/10.25923/g1ny-y360>
-
-</div>
-
-<div id="ref-cb2021" class="csl-entry">
-
-Resource Assessment, A. F. S. C. (U.S.)., and Division, C. E. (2021).
-*Groundfish survey data codes and forms*.
-<https://doi.org/10.25923/kp5e-1g02>
 
 </div>
 
@@ -173,7 +166,6 @@ columns:
 | CRUISEJOIN                | Cruise ID                                                         | ID code                          | NUMBER(38,0)        | This is a unique numeric identifier assigned to each survey, vessel, and year combination.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | DATABASE                  | Genus phylogenetic rank                                           | category                         | VARCHAR2(255 BYTE)  | Taxonomic database source (e.g., “ITIS”, “WORMS”).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | DATABASE_ID               | Subfamily phylogenetic rank                                       | ID code                          | VARCHAR2(255 BYTE)  | Species ID code of a species in the taxonomic “DATABASE” source.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| DATE_TIME                 | Date and Time of Haul                                             | MM/DD/YYYY HH::MM                | DATE                | The date (MM/DD/YYYY) and time (HH:MM) of the beginning of the haul.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | DEPTH_M                   | Depth (m)                                                         | degrees Celsius                  | NUMBER(38,1)        | Bottom depth (tenths of a meter).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | DEPTH_MAX_M               | Area ID Maximum Depth (m)                                         | meters                           | NUMBER(38,3)        | Maximum depth (meters) of the area covered by AREA_ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | DEPTH_MIN_M               | Area ID Minimum Depth (m)                                         | meters                           | NUMBER(38,3)        | Minimum depth (meters) of the area covered by AREA_ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -259,12 +251,18 @@ columns:
 | WIRE_LENGTH_M             | Trawl wire length                                                 | meters                           | NUMBER(38,0)        | Length of wire deployed during a given haul in meters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | WORMS                     | World Register of Marine Species Taxonomic Serial Number          | ID code                          | NUMBER(38,0)        | Species code as identified in the World Register of Marine Species (WoRMS) (<https://www.marinespecies.org/>).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | YEAR                      | Year                                                              | year                             | NUMBER(10,0)        | Year the survey was conducted in.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| DATE_TIME_START           | Start Date and Time                                               | MM/DD/YYYY HH::MM                | DATE                | The date (MM/DD/YYYY) and time (HH:MM) of the beginning of the haul.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| DATE_TIME_END             | End Date and Time                                                 | MM/DD/YYYY HH::MM                | DATE                | The date (MM/DD/YYYY) and time (HH:MM) of the end of the haul.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| DATE_TIME                 | Date and Time                                                     | MM/DD/YYYY HH::MM                | DATE                | The date (MM/DD/YYYY) and time (HH:MM) of the haul.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| DATE_START                | Start Date                                                        | YYYY-MM-DD                       | DATE                | The date (YYYY-MM-DD) of the beginning of the event (e.g., cruise).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| DATE_END                  | End Date                                                          | YYYY-MM-DD                       | DATE                | The date (YYYY-MM-DD) of the end of the event (e.g., cruise).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| DATE                      | Date                                                              | YYYY-MM-DD                       | DATE                | The date (YYYY-MM-DD) of the event (e.g., cruise).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 # Access in Oracle
 
 For internal use only. Find the `GAP_PRODUCTS.METADATA_COLUMN` and
 `GAP_PRODUCTS.METADATA_TABLE` in oracle for the tables above. Check out
-the `functions_oracle.R` script for funtions for downloading or
+the `functions_oracle.R` script for functions for downloading or
 uploading data to oracle.
 
 # Suggestions and comments
@@ -283,41 +281,41 @@ This data was compiled using the below `R` environment and `R` packages:
 sessionInfo()
 ```
 
-    ## R version 4.3.0 (2023-04-21 ucrt)
-    ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-    ## Running under: Windows 10 x64 (build 19045)
-    ## 
-    ## Matrix products: default
-    ## 
-    ## 
-    ## locale:
-    ## [1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8   
-    ## [3] LC_MONETARY=English_United States.utf8 LC_NUMERIC=C                          
-    ## [5] LC_TIME=English_United States.utf8    
-    ## 
-    ## time zone: America/Los_Angeles
-    ## tzcode source: internal
-    ## 
-    ## attached base packages:
-    ## [1] stats     graphics  grDevices utils     datasets  methods   base     
-    ## 
-    ## other attached packages:
-    ## [1] knitr_1.42        badger_0.2.3      janitor_2.2.0     readxl_1.4.2      googledrive_2.1.0 magrittr_2.0.3   
-    ## 
-    ## loaded via a namespace (and not attached):
-    ##  [1] yulab.utils_0.0.6   rappdirs_0.3.3      utf8_1.2.3          generics_0.1.3      stringi_1.7.12     
-    ##  [6] hms_1.1.3           digest_0.6.31       readtext_0.82       grid_4.3.0          RColorBrewer_1.1-3 
-    ## [11] evaluate_0.20       timechange_0.2.0    fastmap_1.1.1       cellranger_1.1.0    jsonlite_1.8.4     
-    ## [16] BiocManager_1.30.20 httr_1.4.5          purrr_1.0.1         fansi_1.0.4         scales_1.2.1       
-    ## [21] cli_3.6.1           rlang_1.1.1         crayon_1.5.2        munsell_0.5.0       bit64_4.0.5        
-    ## [26] withr_2.5.0         yaml_2.3.7          parallel_4.3.0      tools_4.3.0         tzdb_0.3.0         
-    ## [31] gargle_1.4.0        dplyr_1.1.2         colorspace_2.1-0    ggplot2_3.4.2       curl_5.0.0         
-    ## [36] vctrs_0.6.2         R6_2.5.1            lifecycle_1.0.3     lubridate_1.9.2     snakecase_0.11.0   
-    ## [41] stringr_1.5.0       fs_1.6.2            bit_4.0.5           vroom_1.6.3         pkgconfig_2.0.3    
-    ## [46] gtable_0.3.3        pillar_1.9.0        data.table_1.14.8   glue_1.6.2          rvcheck_0.2.1      
-    ## [51] xfun_0.39           tibble_3.2.1        tidyselect_1.2.0    rstudioapi_0.14     htmltools_0.5.5    
-    ## [56] rmarkdown_2.21      dlstats_0.1.6       readr_2.1.4         compiler_4.3.0      askpass_1.1        
-    ## [61] openssl_2.0.6
+    FALSE R version 4.3.0 (2023-04-21 ucrt)
+    FALSE Platform: x86_64-w64-mingw32/x64 (64-bit)
+    FALSE Running under: Windows 10 x64 (build 19045)
+    FALSE 
+    FALSE Matrix products: default
+    FALSE 
+    FALSE 
+    FALSE locale:
+    FALSE [1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8    LC_MONETARY=English_United States.utf8
+    FALSE [4] LC_NUMERIC=C                           LC_TIME=English_United States.utf8    
+    FALSE 
+    FALSE time zone: America/Los_Angeles
+    FALSE tzcode source: internal
+    FALSE 
+    FALSE attached base packages:
+    FALSE [1] stats     graphics  grDevices utils     datasets  methods   base     
+    FALSE 
+    FALSE other attached packages:
+    FALSE [1] RODBC_1.3-20      knitr_1.42        badger_0.2.3      janitor_2.2.0     readxl_1.4.2      googledrive_2.1.0
+    FALSE [7] magrittr_2.0.3   
+    FALSE 
+    FALSE loaded via a namespace (and not attached):
+    FALSE  [1] yulab.utils_0.0.6   rappdirs_0.3.3      utf8_1.2.3          generics_0.1.3      stringi_1.7.12     
+    FALSE  [6] hms_1.1.3           digest_0.6.31       readtext_0.82       grid_4.3.0          evaluate_0.20      
+    FALSE [11] timechange_0.2.0    RColorBrewer_1.1-3  fastmap_1.1.1       cellranger_1.1.0    jsonlite_1.8.4     
+    FALSE [16] BiocManager_1.30.20 httr_1.4.5          purrr_1.0.1         fansi_1.0.4         scales_1.2.1       
+    FALSE [21] cli_3.6.1           crayon_1.5.2        rlang_1.1.1         bit64_4.0.5         munsell_0.5.0      
+    FALSE [26] withr_2.5.0         yaml_2.3.7          parallel_4.3.0      tools_4.3.0         tzdb_0.3.0         
+    FALSE [31] gargle_1.4.0        dplyr_1.1.2         colorspace_2.1-0    ggplot2_3.4.2       curl_5.0.0         
+    FALSE [36] vctrs_0.6.2         R6_2.5.1            lifecycle_1.0.3     lubridate_1.9.2     snakecase_0.11.0   
+    FALSE [41] stringr_1.5.0       bit_4.0.5           fs_1.6.2            vroom_1.6.3         pkgconfig_2.0.3    
+    FALSE [46] gtable_0.3.3        pillar_1.9.0        data.table_1.14.8   glue_1.6.2          rvcheck_0.2.1      
+    FALSE [51] xfun_0.39           tibble_3.2.1        tidyselect_1.2.0    rstudioapi_0.14     htmltools_0.5.5    
+    FALSE [56] rmarkdown_2.21      dlstats_0.1.6       readr_2.1.4         compiler_4.3.0      askpass_1.1        
+    FALSE [61] openssl_2.0.6
 
 ## NOAA README
 

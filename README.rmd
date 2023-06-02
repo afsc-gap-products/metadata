@@ -7,7 +7,7 @@ bibliography: "https://raw.githubusercontent.com/afsc-gap-products/citations/mai
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, error = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, error = FALSE, message = FALSE, comment = FALSE)
 ```
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -24,6 +24,8 @@ for (p in PKG) {
 ```
 
 # [AFSC RACE Groundfish and Shellfish Survey Metadata](`r link_repo`) <img src="https://avatars.githubusercontent.com/u/91760178?s=96&amp;v=4" alt="Logo." align="right" width="139" height="139"/>
+
+## !!!This code has now moved to the [GAP_PRODUCTS Repository](https://github.com/afsc-gap-products/gap_products)!!!
 
 ## This code is primarily maintained by:
 
@@ -73,7 +75,7 @@ These metadata were last updated on `r pretty_date`.
 ## User resources
 
 -   [AFSC’s Resource Assessment and Conservation Engineering Division](https://www.fisheries.noaa.gov/about/resource-assessment-and-conservation-engineering-division).
--   For more information about codes used in the tables, please refer to the [survey code books](`r INSERT_CODE_BOOK `) [@cb2021].
+-   For more information about codes used in the tables, please refer to the survey code books.
 -   Find [past reports](http://apps-afsc.fisheries.noaa.gov/RACE/surveys/cruise_results.htm) about these surveys.
 -   [GitHub repository](`r link_repo`).
 -   Learn more about other [Research Surveys conducted at AFSC](https://www.fisheries.noaa.gov/alaska/ecosystems/alaska-fish-research-surveys).
@@ -115,7 +117,7 @@ knitr::kable(metadata_column0, row.names = FALSE)
 
 # Access in Oracle
 
-For internal use only. Find the `GAP_PRODUCTS.METADATA_COLUMN` and `GAP_PRODUCTS.METADATA_TABLE` in oracle for the tables above. Check out the `functions_oracle.R` script for funtions for downloading or uploading data to oracle. 
+For internal use only. Find the `GAP_PRODUCTS.METADATA_COLUMN` and `GAP_PRODUCTS.METADATA_TABLE` in oracle for the tables above. Check out the `functions_oracle.R` script for functions for downloading or uploading data to oracle. 
 
 # Suggestions and comments
 
